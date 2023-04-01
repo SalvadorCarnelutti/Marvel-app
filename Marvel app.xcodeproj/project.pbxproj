@@ -10,6 +10,7 @@
 		212E6405DE8804DD6031458E /* Pods_Marvel_app_Marvel_appUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBC433094115C8210D663187 /* Pods_Marvel_app_Marvel_appUITests.framework */; };
 		4AB1E15F26710BB2F9D5507C /* Pods_Marvel_appTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E17170D933E857835D67B36A /* Pods_Marvel_appTests.framework */; };
 		7445212456396C181A223CDE /* Pods_Marvel_app.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7F2AE3C80166EE3998B771E /* Pods_Marvel_app.framework */; };
+		B441D4F829D8CEA7007CC76D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B441D4F729D8CEA7007CC76D /* GoogleService-Info.plist */; };
 		B4577CEA29D79D9F00020AF5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4577CE929D79D9F00020AF5 /* AppDelegate.swift */; };
 		B4577CEC29D79D9F00020AF5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4577CEB29D79D9F00020AF5 /* SceneDelegate.swift */; };
 		B4577CEE29D79D9F00020AF5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4577CED29D79D9F00020AF5 /* ViewController.swift */; };
@@ -18,8 +19,6 @@
 		B4577D0129D79DA000020AF5 /* Marvel_appTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4577D0029D79DA000020AF5 /* Marvel_appTests.swift */; };
 		B4577D0B29D79DA000020AF5 /* Marvel_appUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4577D0A29D79DA000020AF5 /* Marvel_appUITests.swift */; };
 		B4577D0D29D79DA000020AF5 /* Marvel_appUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4577D0C29D79DA000020AF5 /* Marvel_appUITestsLaunchTests.swift */; };
-		B4577D1A29D7A68200020AF5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B4577D1929D7A68200020AF5 /* GoogleService-Info.plist */; };
-		B4577D1D29D7A94A00020AF5 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = B4577D1C29D7A94A00020AF5 /* FirebaseAuth */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +44,7 @@
 		66DD5A1D9355764F2A05C2A1 /* Pods-Marvel appTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Marvel appTests.release.xcconfig"; path = "Target Support Files/Pods-Marvel appTests/Pods-Marvel appTests.release.xcconfig"; sourceTree = "<group>"; };
 		800F50B35A121D97C9C24251 /* Pods-Marvel appTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Marvel appTests.debug.xcconfig"; path = "Target Support Files/Pods-Marvel appTests/Pods-Marvel appTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A8F8AD459548BDA7B382A40D /* Pods-Marvel app.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Marvel app.debug.xcconfig"; path = "Target Support Files/Pods-Marvel app/Pods-Marvel app.debug.xcconfig"; sourceTree = "<group>"; };
+		B441D4F729D8CEA7007CC76D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B4577CE629D79D9F00020AF5 /* Marvel app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Marvel app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4577CE929D79D9F00020AF5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B4577CEB29D79D9F00020AF5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -57,7 +57,6 @@
 		B4577D0629D79DA000020AF5 /* Marvel appUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Marvel appUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4577D0A29D79DA000020AF5 /* Marvel_appUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Marvel_appUITests.swift; sourceTree = "<group>"; };
 		B4577D0C29D79DA000020AF5 /* Marvel_appUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Marvel_appUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		B4577D1929D7A68200020AF5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C7F2AE3C80166EE3998B771E /* Pods_Marvel_app.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Marvel_app.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D472A8A2EC10E7C4CCDC2F58 /* Pods-Marvel app-Marvel appUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Marvel app-Marvel appUITests.release.xcconfig"; path = "Target Support Files/Pods-Marvel app-Marvel appUITests/Pods-Marvel app-Marvel appUITests.release.xcconfig"; sourceTree = "<group>"; };
 		DBC433094115C8210D663187 /* Pods_Marvel_app_Marvel_appUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Marvel_app_Marvel_appUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -70,7 +69,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				7445212456396C181A223CDE /* Pods_Marvel_app.framework in Frameworks */,
-				B4577D1D29D7A94A00020AF5 /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -134,7 +132,7 @@
 				B4577CF229D79DA000020AF5 /* Assets.xcassets */,
 				B4577CF429D79DA000020AF5 /* LaunchScreen.storyboard */,
 				B4577CF729D79DA000020AF5 /* Info.plist */,
-				B4577D1929D7A68200020AF5 /* GoogleService-Info.plist */,
+				B441D4F729D8CEA7007CC76D /* GoogleService-Info.plist */,
 			);
 			path = "Marvel app";
 			sourceTree = "<group>";
@@ -188,7 +186,6 @@
 			);
 			name = "Marvel app";
 			packageProductDependencies = (
-				B4577D1C29D7A94A00020AF5 /* FirebaseAuth */,
 			);
 			productName = "Marvel app";
 			productReference = B4577CE629D79D9F00020AF5 /* Marvel app.app */;
@@ -266,7 +263,6 @@
 			);
 			mainGroup = B4577CDD29D79D9F00020AF5;
 			packageReferences = (
-				B4577D1B29D7A94A00020AF5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = B4577CE729D79D9F00020AF5 /* Products */;
 			projectDirPath = "";
@@ -286,7 +282,7 @@
 			files = (
 				B4577CF629D79DA000020AF5 /* LaunchScreen.storyboard in Resources */,
 				B4577CF329D79DA000020AF5 /* Assets.xcassets in Resources */,
-				B4577D1A29D7A68200020AF5 /* GoogleService-Info.plist in Resources */,
+				B441D4F829D8CEA7007CC76D /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -754,25 +750,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		B4577D1B29D7A94A00020AF5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 9.0.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		B4577D1C29D7A94A00020AF5 /* FirebaseAuth */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = B4577D1B29D7A94A00020AF5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAuth;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = B4577CDE29D79D9F00020AF5 /* Project object */;
 }

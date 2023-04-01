@@ -1,10 +1,12 @@
 source 'https://github.com/CocoaPods/Specs.git'
-platform :ios, '10.0'
+platform :ios, '11.0'
 
 target 'Marvel app' do
   use_frameworks!
 
   # Pods for Marvel app
+	pod 'FirebaseAuth'
+	pod 'FirebaseUI'
 	pod 'SnapKit', '~> 5.6.0'
 
   target 'Marvel appTests' do
