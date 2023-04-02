@@ -7,7 +7,7 @@ target 'Marvel app' do
   # Pods for Marvel app
 	pod 'FirebaseAuth'
 	pod 'FirebaseUI'
-	pod 'SnapKit', '~> 5.6.0'
+	pod 'Alamofire'
 
   target 'Marvel appTests' do
     inherit! :search_paths
