@@ -11,6 +11,8 @@ import UIKit
 
 protocol EventComicsViewToPresenterProtocol: UIViewController {
     var eventItem: Item { get }
+    var comicsCount: Int { get }
+    func comicAt(row: Int) -> String
 }
 
 final class EventComicsPresenter: UIViewController {
@@ -32,5 +34,13 @@ final class EventComicsPresenter: UIViewController {
 extension EventComicsPresenter: EventComicsViewToPresenterProtocol {
     var eventItem: Item {
         interactor.eventItem
+    }
+    
+    var comicsCount: Int {
+        interactor.comicsCount
+    }
+    
+    func comicAt(row: Int) -> String {
+        interactor.comicAt(row: row)
     }
 }

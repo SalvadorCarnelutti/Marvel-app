@@ -27,6 +27,7 @@ final class EventsView: UIView {
         tableView.dataSource = self
         tableView.estimatedRowHeight = UITableView.automaticDimension
         tableView.separatorStyle = .none
+        tableView.backgroundColor = .clear
         return tableView
     }()
     
@@ -43,7 +44,7 @@ final class EventsView: UIView {
 // MARK: - PresenterToViewProtocol
 extension EventsView: EventsPresenterToViewProtocol {
     func loadView() {
-        backgroundColor = .white
+        backgroundColor = .secondarySystemBackground
         presenter?.loadEvents(onSuccess: tableView.reloadData)
         setupConstraints()
     }        
@@ -68,16 +69,4 @@ extension EventsView: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         presenter?.loadComicsAt(row: indexPath.row)
     }
-}
-
-struct ComicsResponse: Codable {
-    let data: Comics
-}
-
-struct Comics: Codable {
-    let results: [Comic]
-}
-
-struct Comic: Codable {
-    let title: String
 }

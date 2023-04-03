@@ -11,15 +11,14 @@ class EventTableViewCell: UITableViewCell {
     private lazy var eventHighlight: EventHighlight = {
         let eventHighlight = EventHighlight()
         eventHighlight.translatesAutoresizingMaskIntoConstraints = false
-        eventHighlight.backgroundColor = .systemBrown
-        eventHighlight.layer.cornerRadius = 4
         addSubview(eventHighlight)
+        eventHighlight.layer.cornerRadius = 4
         return eventHighlight
     }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        clipsToBounds = true
+        backgroundColor = .clear
         setupConstraints()
     }
     

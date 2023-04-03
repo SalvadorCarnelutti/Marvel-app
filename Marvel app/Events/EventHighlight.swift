@@ -45,6 +45,7 @@ class EventHighlight: UIView {
     
     init() {
         super.init(frame: .zero)
+        backgroundColor = .systemBackground
         setupConstraints()
     }
     
@@ -54,7 +55,7 @@ class EventHighlight: UIView {
     
     private func setupConstraints() {
         NSLayoutConstraint.activate([
-            eventImageView.topAnchor.constraint(greaterThanOrEqualTo: safeAreaLayoutGuide.topAnchor, constant: 17),
+            eventImageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 17),
             eventImageView.centerYAnchor.constraint(equalTo: safeAreaLayoutGuide.centerYAnchor),
             eventImageView.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor, constant: 17),
         ])

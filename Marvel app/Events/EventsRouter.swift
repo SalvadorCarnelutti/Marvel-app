@@ -10,7 +10,7 @@ import UIKit
 protocol EventsPresenterToRouterProtocol: AnyObject {
     var viewController: UIViewController? { get set }
     // Need to define item parameter
-    func presentComics(with eventItem: Item)
+    func presentComics(with eventComics: EventComics)
 }
 
 class EventsRouter: EventsPresenterToRouterProtocol {
@@ -18,10 +18,10 @@ class EventsRouter: EventsPresenterToRouterProtocol {
     weak var viewController: UIViewController?
 
     
-    func presentComics(with eventItem: Item) {
+    func presentComics(with eventComics: EventComics) {
         let eventComicsPresenter = EventComicsPresenter()
         let eventComicsView = EventComicsView()
-        let eventComicsInteractor = EventComicsInteractor(eventItem: eventItem)
+        let eventComicsInteractor = EventComicsInteractor(eventComics: eventComics)
         EventComicsConfigurator.injectDependencies(view: eventComicsView,
                                                    interactor: eventComicsInteractor,
                                                    presenter: eventComicsPresenter)

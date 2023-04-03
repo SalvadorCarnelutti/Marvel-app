@@ -11,24 +11,23 @@ import Alamofire
 
 protocol EventsPresenterToInteractorProtocol: AnyObject {
     var itemsCount: Int { get }
-    func loadEvents(onSuccess: @escaping () -> ())
-    func loadComicsAt(row: Int, onSuccess: @escaping (Item) -> ())
     func itemAt(row: Int) -> Item
+    func loadEvents(onSuccess: @escaping () -> ())
+    func loadComicsAt(row: Int, onSuccess: @escaping (EventComics) -> ())
 }
 
 // MARK: - PresenterToInteractorProtocol
 final class EventsInteractor: EventsPresenterToInteractorProtocol {
-    func itemAt(row: Int) -> Item {
-        items[row]
-    }
+    let session = Session(eventMonitors: [AlamofireLogger()])
+    var eventItems = [EventCellItem]()
     
     var itemsCount: Int {
-        return items.count
+        eventItems.count
     }
     
-    let session = Session(eventMonitors: [AlamofireLogger()])
-    var items = [EventCellItem]()
-
+    func itemAt(row: Int) -> Item {
+        eventItems[row]
+    }
     
     func loadEvents(onSuccess: @escaping () -> ()) {
         session.request("https://gateway.marvel.com/v1/public/events",
@@ -46,7 +45,7 @@ final class EventsInteractor: EventsPresenterToInteractorProtocol {
                     let dateSortedEvents = eventsArray.filter { $0.start != nil }.map { $0.getItem }.sorted { $0.startDate! > $1.startDate! }
                     let datelessEvents = eventsArray.filter { $0.start == nil }.map { $0.getItem }
                     let combinedEvents = dateSortedEvents + datelessEvents
-                    self?.items = combinedEvents
+                    self?.eventItems = combinedEvents
                     onSuccess()
                 case .failure(let error):
                     print(error)
@@ -54,8 +53,8 @@ final class EventsInteractor: EventsPresenterToInteractorProtocol {
             }
     }
     
-    func loadComicsAt(row: Int, onSuccess: @escaping (Item) -> ()) {
-        session.request("https://gateway.marvel.com/v1/public/events/\(items[row].id)/comics",
+    func loadComicsAt(row: Int, onSuccess: @escaping (EventComics) -> ()) {
+        session.request("https://gateway.marvel.com/v1/public/events/\(eventItems[row].id)/comics",
                         parameters: [
                             "apikey": CryptoHelper.publicKey,
                             "hash" : CryptoHelper.hash,
@@ -65,7 +64,9 @@ final class EventsInteractor: EventsPresenterToInteractorProtocol {
                 guard let self = self else { return }
                 switch response.result {
                 case .success(let events):
-                    onSuccess(self.items[row])
+                    let eventItem = self.eventItems[row]
+                    let comicItems = events.data.results.map { $0.title }
+                    onSuccess(EventComics(eventItem: eventItem, comicItems: comicItems))
                 case .failure(let error):
                     print(error)
                 }
@@ -73,7 +74,7 @@ final class EventsInteractor: EventsPresenterToInteractorProtocol {
     }
 }
 
-// MARK: - Entity
+// MARK: - Events Entity
 struct EventResponse: Codable {
     let data: Events
 }
@@ -118,4 +119,17 @@ struct EventCellItem: Item {
     var description: String {
         startDate?.formatAsString(dateFormat: "MMM d, yyyy") ?? "Unknown date"
     }
+}
+
+// MARK: - Comics Entity
+struct ComicsResponse: Codable {
+    let data: Comics
+}
+
+struct Comics: Codable {
+    let results: [Comic]
+}
+
+struct Comic: Codable {
+    let title: String
 }
