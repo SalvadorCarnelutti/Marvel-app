@@ -21,11 +21,6 @@ final class EventComicsView: UIView {
         let eventHighlight = EventHighlight()
         eventHighlight.translatesAutoresizingMaskIntoConstraints = false
         addSubview(eventHighlight)
-        eventHighlight.layer.cornerRadius = 4
-        eventHighlight.layer.shadowColor = UIColor.black.withAlphaComponent(0.8).cgColor
-        eventHighlight.layer.shadowOpacity = 1.0
-        eventHighlight.layer.shadowRadius = 4.0
-        eventHighlight.layer.shadowOffset = CGSize(width: 0, height: 12)
         return eventHighlight
     }()
     

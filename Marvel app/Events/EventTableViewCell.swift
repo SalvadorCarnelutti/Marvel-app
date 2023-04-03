@@ -28,7 +28,7 @@ class EventTableViewCell: UITableViewCell {
     
     private func setupConstraints() {
         NSLayoutConstraint.activate([
-            eventHighlight.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 8),
+            eventHighlight.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 4),
             eventHighlight.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor),
             eventHighlight.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor),
             eventHighlight.centerYAnchor.constraint(equalTo: safeAreaLayoutGuide.centerYAnchor)
