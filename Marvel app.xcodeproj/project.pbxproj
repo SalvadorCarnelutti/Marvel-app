@@ -33,6 +33,7 @@
 		B441D52429DA7121007CC76D /* Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = B441D52329DA7121007CC76D /* Alamofire.swift */; };
 		B441D52629DA7B2E007CC76D /* EventsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B441D52529DA7B2E007CC76D /* EventsRouter.swift */; };
 		B441D52829DB1AD0007CC76D /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = B441D52729DB1AD0007CC76D /* String.swift */; };
+		B441D52A29DB20C4007CC76D /* CryptoHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B441D52929DB20C4007CC76D /* CryptoHelper.swift */; };
 		B4577CEA29D79D9F00020AF5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4577CE929D79D9F00020AF5 /* AppDelegate.swift */; };
 		B4577CEC29D79D9F00020AF5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4577CEB29D79D9F00020AF5 /* SceneDelegate.swift */; };
 		B4577CEE29D79D9F00020AF5 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4577CED29D79D9F00020AF5 /* TabBarViewController.swift */; };
@@ -89,6 +90,7 @@
 		B441D52329DA7121007CC76D /* Alamofire.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alamofire.swift; sourceTree = "<group>"; };
 		B441D52529DA7B2E007CC76D /* EventsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsRouter.swift; sourceTree = "<group>"; };
 		B441D52729DB1AD0007CC76D /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		B441D52929DB20C4007CC76D /* CryptoHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoHelper.swift; sourceTree = "<group>"; };
 		B4577CE629D79D9F00020AF5 /* Marvel app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Marvel app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4577CE929D79D9F00020AF5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B4577CEB29D79D9F00020AF5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -175,6 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				B4577CED29D79D9F00020AF5 /* TabBarViewController.swift */,
+				B441D52929DB20C4007CC76D /* CryptoHelper.swift */,
 				B441D50B29D8DB87007CC76D /* TabViewController.swift */,
 				B441D50E29D8DC8A007CC76D /* UIImages.swift */,
 				B441D51629D9EB0C007CC76D /* UITableView.swift */,
@@ -533,6 +536,7 @@
 				B441D50A29D8DB31007CC76D /* EventsConfigurator.swift in Sources */,
 				B441D4FF29D8D70C007CC76D /* CharactersInteractor.swift in Sources */,
 				B441D50829D8DB31007CC76D /* EventsInteractor.swift in Sources */,
+				B441D52A29DB20C4007CC76D /* CryptoHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

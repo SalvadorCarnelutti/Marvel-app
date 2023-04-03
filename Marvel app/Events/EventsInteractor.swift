@@ -33,8 +33,8 @@ final class EventsInteractor: EventsPresenterToInteractorProtocol {
     func loadEvents(onSuccess: @escaping () -> ()) {
         session.request("https://gateway.marvel.com/v1/public/events",
                         parameters: [
-                            "apikey":"5b23e88d26cf56958f076f88be9fed9d",
-                            "hash" : MD5(string: "1" + "b220d549848ca21eacd776e73db60e6deccfd95f" + "5b23e88d26cf56958f076f88be9fed9d"),
+                            "apikey": CryptoHelper.apiKey,
+                            "hash" : CryptoHelper.hash,
                             "ts" : "1",
                             "limit" : "25",
                             "orderBy" : "-startDate"
@@ -57,8 +57,8 @@ final class EventsInteractor: EventsPresenterToInteractorProtocol {
     func loadComicsAt(row: Int, onSuccess: @escaping (Item) -> ()) {
         session.request("https://gateway.marvel.com/v1/public/events/\(items[row].id)/comics",
                         parameters: [
-                            "apikey":"5b23e88d26cf56958f076f88be9fed9d",
-                            "hash" : MD5(string: "1" + "b220d549848ca21eacd776e73db60e6deccfd95f" + "5b23e88d26cf56958f076f88be9fed9d"),
+                            "apikey": CryptoHelper.publicKey,
+                            "hash" : CryptoHelper.hash,
                             "ts" : "1"
                         ]).validate(statusCode: 200...299)
             .responseDecodable(of: ComicsResponse.self) { [weak self] (response) in
@@ -71,7 +71,6 @@ final class EventsInteractor: EventsPresenterToInteractorProtocol {
                 }
             }
     }
-
 }
 
 // MARK: - Entity
@@ -119,14 +118,4 @@ struct EventCellItem: Item {
     var description: String {
         startDate?.formatAsString(dateFormat: "MMM d, yyyy") ?? "Unknown date"
     }
-}
-
-import CryptoKit
-
-func MD5(string: String) -> String {
-    let digest = Insecure.MD5.hash(data: Data(string.utf8))
-
-    return digest.map {
-        String(format: "%02hhx", $0)
-    }.joined()
 }
