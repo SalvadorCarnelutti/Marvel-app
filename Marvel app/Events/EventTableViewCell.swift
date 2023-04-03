@@ -37,11 +37,13 @@ class EventTableViewCell: UITableViewCell {
     }
     
     func configure(with item: Item) {
+        selectionStyle = .none
         eventHighlight.configure(with: item)
     }
 }
 
 struct EventCell: Item {
+    var imageURL: String
     var heading: String
     var description: String
 }

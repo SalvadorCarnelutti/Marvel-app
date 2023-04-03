@@ -29,8 +29,8 @@ final class EventComicsView: UIView {
     private func setupConstraints() {
         NSLayoutConstraint.activate([
             eventHighlight.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 8),
-            eventHighlight.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor),
-            eventHighlight.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor),
+            eventHighlight.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor, constant: 8),
+            eventHighlight.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor)
         ])
     }
 }

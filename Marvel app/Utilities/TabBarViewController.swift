@@ -47,9 +47,12 @@ extension TabBarViewController {
         let eventsPresenter = EventsPresenter()
         let eventsView = EventsView()
         let eventsInteractor = EventsInteractor()
+        let eventRouter = EventsRouter()
+        
         EventsConfigurator.injectDependencies(view: eventsView,
                                               interactor: eventsInteractor,
-                                              presenter: eventsPresenter)
+                                              presenter: eventsPresenter,
+                                              router: eventRouter)
         return eventsPresenter
     }
 }
