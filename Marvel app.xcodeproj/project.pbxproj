@@ -23,6 +23,13 @@
 		B441D50F29D8DC8A007CC76D /* UIImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = B441D50E29D8DC8A007CC76D /* UIImages.swift */; };
 		B441D51129D90FEF007CC76D /* UITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B441D51029D90FEF007CC76D /* UITableViewCell.swift */; };
 		B441D51329D91188007CC76D /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B441D51229D91188007CC76D /* EventTableViewCell.swift */; };
+		B441D51529D9D614007CC76D /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = B441D51429D9D613007CC76D /* Date.swift */; };
+		B441D51729D9EB0C007CC76D /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B441D51629D9EB0C007CC76D /* UITableView.swift */; };
+		B441D51929D9F671007CC76D /* EventHighlight.swift in Sources */ = {isa = PBXBuildFile; fileRef = B441D51829D9F671007CC76D /* EventHighlight.swift */; };
+		B441D51F29DA6F1A007CC76D /* EventComicsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B441D51B29DA6F1A007CC76D /* EventComicsPresenter.swift */; };
+		B441D52029DA6F1A007CC76D /* EventComicsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B441D51C29DA6F1A007CC76D /* EventComicsInteractor.swift */; };
+		B441D52129DA6F1A007CC76D /* EventComicsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B441D51D29DA6F1A007CC76D /* EventComicsView.swift */; };
+		B441D52229DA6F1A007CC76D /* EventComicsConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B441D51E29DA6F1A007CC76D /* EventComicsConfigurator.swift */; };
 		B4577CEA29D79D9F00020AF5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4577CE929D79D9F00020AF5 /* AppDelegate.swift */; };
 		B4577CEC29D79D9F00020AF5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4577CEB29D79D9F00020AF5 /* SceneDelegate.swift */; };
 		B4577CEE29D79D9F00020AF5 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4577CED29D79D9F00020AF5 /* TabBarViewController.swift */; };
@@ -69,6 +76,13 @@
 		B441D50E29D8DC8A007CC76D /* UIImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImages.swift; sourceTree = "<group>"; };
 		B441D51029D90FEF007CC76D /* UITableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCell.swift; sourceTree = "<group>"; };
 		B441D51229D91188007CC76D /* EventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
+		B441D51429D9D613007CC76D /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		B441D51629D9EB0C007CC76D /* UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
+		B441D51829D9F671007CC76D /* EventHighlight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventHighlight.swift; sourceTree = "<group>"; };
+		B441D51B29DA6F1A007CC76D /* EventComicsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventComicsPresenter.swift; sourceTree = "<group>"; };
+		B441D51C29DA6F1A007CC76D /* EventComicsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventComicsInteractor.swift; sourceTree = "<group>"; };
+		B441D51D29DA6F1A007CC76D /* EventComicsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventComicsView.swift; sourceTree = "<group>"; };
+		B441D51E29DA6F1A007CC76D /* EventComicsConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventComicsConfigurator.swift; sourceTree = "<group>"; };
 		B4577CE629D79D9F00020AF5 /* Marvel app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Marvel app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4577CE929D79D9F00020AF5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B4577CEB29D79D9F00020AF5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -139,11 +153,13 @@
 		B441D50229D8DB1F007CC76D /* Events */ = {
 			isa = PBXGroup;
 			children = (
+				B441D51A29DA6F0C007CC76D /* EventComics */,
 				B441D50329D8DB31007CC76D /* EventsPresenter.swift */,
 				B441D50429D8DB31007CC76D /* EventsInteractor.swift */,
 				B441D50529D8DB31007CC76D /* EventsView.swift */,
 				B441D50629D8DB31007CC76D /* EventsConfigurator.swift */,
 				B441D51229D91188007CC76D /* EventTableViewCell.swift */,
+				B441D51829D9F671007CC76D /* EventHighlight.swift */,
 			);
 			path = Events;
 			sourceTree = "<group>";
@@ -154,9 +170,22 @@
 				B4577CED29D79D9F00020AF5 /* TabBarViewController.swift */,
 				B441D50B29D8DB87007CC76D /* TabViewController.swift */,
 				B441D50E29D8DC8A007CC76D /* UIImages.swift */,
+				B441D51629D9EB0C007CC76D /* UITableView.swift */,
 				B441D51029D90FEF007CC76D /* UITableViewCell.swift */,
+				B441D51429D9D613007CC76D /* Date.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		B441D51A29DA6F0C007CC76D /* EventComics */ = {
+			isa = PBXGroup;
+			children = (
+				B441D51B29DA6F1A007CC76D /* EventComicsPresenter.swift */,
+				B441D51C29DA6F1A007CC76D /* EventComicsInteractor.swift */,
+				B441D51D29DA6F1A007CC76D /* EventComicsView.swift */,
+				B441D51E29DA6F1A007CC76D /* EventComicsConfigurator.swift */,
+			);
+			path = EventComics;
 			sourceTree = "<group>";
 		};
 		B4577CDD29D79D9F00020AF5 = {
@@ -471,15 +500,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				B441D50C29D8DB87007CC76D /* TabViewController.swift in Sources */,
+				B441D51929D9F671007CC76D /* EventHighlight.swift in Sources */,
 				B441D4FE29D8D70C007CC76D /* CharactersPresenter.swift in Sources */,
 				B441D50929D8DB31007CC76D /* EventsView.swift in Sources */,
+				B441D51529D9D614007CC76D /* Date.swift in Sources */,
 				B441D51329D91188007CC76D /* EventTableViewCell.swift in Sources */,
 				B4577CEE29D79D9F00020AF5 /* TabBarViewController.swift in Sources */,
 				B441D50F29D8DC8A007CC76D /* UIImages.swift in Sources */,
 				B441D51129D90FEF007CC76D /* UITableViewCell.swift in Sources */,
+				B441D52129DA6F1A007CC76D /* EventComicsView.swift in Sources */,
 				B441D50129D8D70C007CC76D /* CharactersConfigurator.swift in Sources */,
 				B441D50029D8D70C007CC76D /* CharactersView.swift in Sources */,
 				B4577CEA29D79D9F00020AF5 /* AppDelegate.swift in Sources */,
+				B441D52229DA6F1A007CC76D /* EventComicsConfigurator.swift in Sources */,
+				B441D51F29DA6F1A007CC76D /* EventComicsPresenter.swift in Sources */,
+				B441D52029DA6F1A007CC76D /* EventComicsInteractor.swift in Sources */,
+				B441D51729D9EB0C007CC76D /* UITableView.swift in Sources */,
 				B441D50729D8DB31007CC76D /* EventsPresenter.swift in Sources */,
 				B4577CEC29D79D9F00020AF5 /* SceneDelegate.swift in Sources */,
 				B441D50A29D8DB31007CC76D /* EventsConfigurator.swift in Sources */,

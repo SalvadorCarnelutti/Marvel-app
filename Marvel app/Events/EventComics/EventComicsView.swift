@@ -1,13 +1,22 @@
 //
-//  EventTableViewCell.swift
+//  
+//  EventComicsView.swift
 //  Marvel app
 //
-//  Created by Salvador on 4/1/23.
+//  Created by Salvador on 4/2/23.
 //
-
+//
 import UIKit
 
-class EventTableViewCell: UITableViewCell {
+protocol EventComicsPresenterToViewProtocol: UIView {
+    var presenter: EventComicsViewToPresenterProtocol? { get set }
+    func loadView()
+}
+
+final class EventComicsView: UIView {
+    // MARK: - Properties
+    weak var presenter: EventComicsViewToPresenterProtocol?
+    
     private lazy var eventHighlight: EventHighlight = {
         let eventHighlight = EventHighlight()
         eventHighlight.translatesAutoresizingMaskIntoConstraints = false
@@ -16,32 +25,20 @@ class EventTableViewCell: UITableViewCell {
         addSubview(eventHighlight)
         return eventHighlight
     }()
-    
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        clipsToBounds = true
-        setupConstraints()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
+        
     private func setupConstraints() {
         NSLayoutConstraint.activate([
             eventHighlight.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 8),
             eventHighlight.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor),
             eventHighlight.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor),
-            eventHighlight.centerYAnchor.constraint(equalTo: safeAreaLayoutGuide.centerYAnchor)
         ])
-    }
-    
-    func configure(with item: Item) {
-        eventHighlight.configure(with: item)
     }
 }
 
-struct EventCell: Item {
-    var heading: String
-    var description: String
+// MARK: - PresenterToViewProtocol
+extension EventComicsView: EventComicsPresenterToViewProtocol {
+    func loadView() {
+        backgroundColor = .white
+        setupConstraints()
+    }
 }
