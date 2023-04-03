@@ -24,24 +24,14 @@ final class EventComicsView: UIView {
         return eventHighlight
     }()
     
-    private lazy var headingLabel: UILabel = {
-        let headingLabel = UILabel()
-        headingLabel.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(headingLabel)
-        headingLabel.font = UIFont.systemFont(ofSize: 20)
-        headingLabel.textAlignment = .center
-        headingLabel.text = "COMICS TO DISCUSS"
-        return headingLabel
-    }()
-    
-    private lazy var tableView: UITableView = {
-        let tableView = UITableView()
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(tableView)
-        tableView.register(ComicTableViewCell.self)
-        tableView.dataSource = self
-        tableView.estimatedRowHeight = UITableView.automaticDimension
-        return tableView
+    private lazy var comicsDisplayView: ComicsDisplayView = {
+        let comicsDisplayView = ComicsDisplayView()
+        comicsDisplayView.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(comicsDisplayView)
+        comicsDisplayView.configure(with: ComicDisplayStruct(dataSource: self,
+                                                             headingText: "Comics to discuss",
+                                                             isComicsEmpty: presenter?.isComicsEmpty ?? true))
+        return comicsDisplayView
     }()
     
     private func setupConstraints() {
@@ -52,15 +42,10 @@ final class EventComicsView: UIView {
         ])
         
         NSLayoutConstraint.activate([
-            headingLabel.topAnchor.constraint(equalTo: eventHighlight.bottomAnchor),
-            headingLabel.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor)
-        ])
-        
-        NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: headingLabel.bottomAnchor, constant: 8),
-            tableView.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor, constant: 8),
-            tableView.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
-            tableView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)
+            comicsDisplayView.topAnchor.constraint(equalTo: eventHighlight.bottomAnchor),
+            comicsDisplayView.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor),
+            comicsDisplayView.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor),
+            comicsDisplayView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)
         ])
     }
 }

@@ -11,6 +11,7 @@ import Foundation
 protocol EventComicsPresenterToInteractorProtocol: AnyObject {
     var eventItem: Item { get }
     var comicsCount: Int { get }
+    var isComicsEmpty: Bool { get }
     func comicAt(row: Int) -> String
 }
 
@@ -28,6 +29,10 @@ final class EventComicsInteractor: EventComicsPresenterToInteractorProtocol {
     
     var comicsCount: Int {
         eventComics.comicItems.count
+    }
+    
+    var isComicsEmpty: Bool {
+        eventComics.comicItems.isEmpty
     }
     
     func comicAt(row: Int) -> String {

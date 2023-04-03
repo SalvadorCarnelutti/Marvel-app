@@ -12,6 +12,7 @@ import UIKit
 protocol EventComicsViewToPresenterProtocol: UIViewController {
     var eventItem: Item { get }
     var comicsCount: Int { get }
+    var isComicsEmpty: Bool { get }
     func comicAt(row: Int) -> String
 }
 
@@ -38,6 +39,10 @@ extension EventComicsPresenter: EventComicsViewToPresenterProtocol {
     
     var comicsCount: Int {
         interactor.comicsCount
+    }
+    
+    var isComicsEmpty: Bool {
+        interactor.isComicsEmpty
     }
     
     func comicAt(row: Int) -> String {
