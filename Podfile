@@ -8,6 +8,7 @@ target 'Marvel app' do
 	pod 'FirebaseAuth'
 	pod 'FirebaseUI'
 	pod 'Alamofire'
+	pod 'SDWebImage', '~> 5.0'
 
   target 'Marvel appTests' do
     inherit! :search_paths

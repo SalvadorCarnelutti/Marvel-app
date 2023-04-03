@@ -38,7 +38,10 @@ final class EventComicsView: UIView {
 // MARK: - PresenterToViewProtocol
 extension EventComicsView: EventComicsPresenterToViewProtocol {
     func loadView() {
+        guard let presenter = presenter else { return }
+        
         backgroundColor = .white
+        eventHighlight.configure(with: presenter.eventItem)
         setupConstraints()
     }
 }

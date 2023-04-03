@@ -12,7 +12,7 @@ import Alamofire
 protocol EventsPresenterToInteractorProtocol: AnyObject {
     var itemsCount: Int { get }
     func loadEvents(onSuccess: @escaping () -> ())
-    func loadComicsAt(row: Int, onSuccess: @escaping () -> ())
+    func loadComicsAt(row: Int, onSuccess: @escaping (Item) -> ())
     func itemAt(row: Int) -> Item
 }
 
@@ -54,7 +54,7 @@ final class EventsInteractor: EventsPresenterToInteractorProtocol {
             }
     }
     
-    func loadComicsAt(row: Int, onSuccess: @escaping () -> ()) {
+    func loadComicsAt(row: Int, onSuccess: @escaping (Item) -> ()) {
         session.request("https://gateway.marvel.com/v1/public/events/\(items[row].id)/comics",
                         parameters: [
                             "apikey":"5b23e88d26cf56958f076f88be9fed9d",
@@ -62,9 +62,10 @@ final class EventsInteractor: EventsPresenterToInteractorProtocol {
                             "ts" : "1"
                         ]).validate(statusCode: 200...299)
             .responseDecodable(of: ComicsResponse.self) { [weak self] (response) in
+                guard let self = self else { return }
                 switch response.result {
                 case .success(let events):
-                    onSuccess()
+                    onSuccess(self.items[row])
                 case .failure(let error):
                     print(error)
                 }
@@ -91,17 +92,27 @@ struct Event: Codable {
 
 struct Image: Codable {
     let path: String
+    let fileExtension: String
+    
+    var imageURL: URL {
+        return URL(string: path.https + "." + fileExtension)!
+    }
+    
+    enum CodingKeys: String, CodingKey {
+        case path
+        case fileExtension = "extension"
+    }
 }
 
 extension Event {
     var getItem: EventCellItem {
-        EventCellItem(id: id, imageURL: thumbnail.path, heading: title, startDate: Date.formatAsDate(start, dateFormat: "yyyy-MM-dd hh:mm:ss"))
+        EventCellItem(id: id, imageURL: thumbnail.imageURL, heading: title, startDate: Date.formatAsDate(start, dateFormat: "yyyy-MM-dd hh:mm:ss"))
     }
 }
 
 struct EventCellItem: Item {
     let id: Int
-    var imageURL: String
+    var imageURL: URL
     let heading: String
     let startDate: Date?
     

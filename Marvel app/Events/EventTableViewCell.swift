@@ -43,7 +43,7 @@ class EventTableViewCell: UITableViewCell {
 }
 
 struct EventCell: Item {
-    var imageURL: String
+    var imageURL: URL
     var heading: String
     var description: String
 }

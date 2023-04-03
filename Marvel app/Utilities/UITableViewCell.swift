@@ -8,7 +8,7 @@
 import UIKit
 
 protocol Item {
-    var imageURL: String { get }
+    var imageURL: URL { get }
     var heading: String { get }
     var description: String { get }
 }

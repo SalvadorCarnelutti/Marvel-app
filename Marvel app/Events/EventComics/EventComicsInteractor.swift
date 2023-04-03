@@ -9,10 +9,16 @@
 import Foundation
 
 protocol EventComicsPresenterToInteractorProtocol: AnyObject {
+    var eventItem: Item { get }
 }
 
 // MARK: - PresenterToInteractorProtocol
 final class EventComicsInteractor: EventComicsPresenterToInteractorProtocol {
+    let eventItem: Item
+    
+    init(eventItem: Item) {
+        self.eventItem = eventItem
+    }
 }
 
 // MARK: - Entity

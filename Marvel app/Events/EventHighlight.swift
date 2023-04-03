@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class EventHighlight: UIView {
     private lazy var eventImageView: UIImageView = {
@@ -72,6 +73,7 @@ class EventHighlight: UIView {
     }
     
     func configure(with item: Item) {
+        eventImageView.sd_setImage(with: item.imageURL)
         headingLabel.text = item.heading
         descriptionLabel.text = item.description
     }

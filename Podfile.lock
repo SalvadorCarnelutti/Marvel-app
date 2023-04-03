@@ -818,6 +818,7 @@ DEPENDENCIES:
   - Alamofire
   - FirebaseAuth
   - FirebaseUI
+  - SDWebImage (~> 5.0)
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
@@ -902,6 +903,6 @@ SPEC CHECKSUMS:
   PromisesObjC: ab77feca74fa2823e7af4249b8326368e61014cb
   SDWebImage: e5cc87bf736e60f49592f307bdf9e157189298a3
 
-PODFILE CHECKSUM: 490caee4763dd1a04e7b44b34ad6a8c71a277453
+PODFILE CHECKSUM: 59c0627e28b793cded931e1eef599185203a2422
 
 COCOAPODS: 1.12.0

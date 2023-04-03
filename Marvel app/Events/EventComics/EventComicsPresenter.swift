@@ -10,6 +10,7 @@
 import UIKit
 
 protocol EventComicsViewToPresenterProtocol: UIViewController {
+    var eventItem: Item { get }
 }
 
 final class EventComicsPresenter: UIViewController {
@@ -29,4 +30,7 @@ final class EventComicsPresenter: UIViewController {
 
 // MARK: - ViewToPresenterProtocol
 extension EventComicsPresenter: EventComicsViewToPresenterProtocol {
+    var eventItem: Item {
+        interactor.eventItem
+    }
 }
