@@ -13,22 +13,8 @@ final class ComicsDisplayView: UIView {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(stackView)
         stackView.axis = .vertical
-        stackView.distribution = .equalCentering
+        stackView.distribution = .fillEqually
         return stackView
-    }()
-    
-    private lazy var comicsTableView: ComicsTableView = {
-        let comicsTableView = ComicsTableView()
-        comicsTableView.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(comicsTableView)
-        return comicsTableView
-    }()
-    
-    private lazy var emptyComicsView: EmptyComicsView = {
-        let emptyComicsView = EmptyComicsView(message: "No comics to see here".uppercased())
-        emptyComicsView.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(emptyComicsView)
-        return emptyComicsView
     }()
     
     init() {
@@ -41,16 +27,17 @@ final class ComicsDisplayView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(with comicDisplay: ComicDisplay) {
-        if comicDisplay.isComicsEmpty {
-            stackView.addArrangedSubview(emptyComicsView)
-            let spacer = UIView()
-            spacer.setContentHuggingPriority(.defaultHigh, for: .vertical)
-            stackView.addArrangedSubview(spacer)
-        } else {
-            comicsTableView.configure(with: comicDisplay.dataSource, headingText: comicDisplay.headingText)
-            stackView.addArrangedSubview(comicsTableView)
-        }
+    func configureAsEmpty(highlightView: UIView, message: String) {
+        stackView.addArrangedSubview(HighlightComicView(highlightView: highlightView, message: message))
+        let spacer = UIView()
+        spacer.setContentHuggingPriority(.defaultHigh, for: .vertical)
+        stackView.addArrangedSubview(spacer)
+    }
+    
+    func configureTable(comicDisplay: ComicDisplay) {
+        let comicsTableView = ComicsTableView()
+        comicsTableView.configure(with: comicDisplay.dataSource, delegate: comicDisplay.delegate)
+        stackView.addArrangedSubview(comicsTableView)
     }
     
     private func setupConstraints() {
@@ -65,12 +52,10 @@ final class ComicsDisplayView: UIView {
 
 struct ComicDisplayStruct: ComicDisplay {
     let dataSource: UITableViewDataSource?
-    let headingText: String?
-    let isComicsEmpty: Bool
+    let delegate: UITableViewDelegate?
 }
 
 protocol ComicDisplay {
     var dataSource: UITableViewDataSource? { get }
-    var headingText: String? { get }
-    var isComicsEmpty: Bool { get }
+    var delegate: UITableViewDelegate? { get }
 }

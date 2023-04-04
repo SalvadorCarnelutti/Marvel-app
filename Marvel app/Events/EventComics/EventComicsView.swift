@@ -20,7 +20,6 @@ final class EventComicsView: UIView {
     private lazy var eventHighlight: EventHighlight = {
         let eventHighlight = EventHighlight()
         eventHighlight.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(eventHighlight)
         return eventHighlight
     }()
     
@@ -28,21 +27,12 @@ final class EventComicsView: UIView {
         let comicsDisplayView = ComicsDisplayView()
         comicsDisplayView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(comicsDisplayView)
-        comicsDisplayView.configure(with: ComicDisplayStruct(dataSource: self,
-                                                             headingText: "Comics to discuss",
-                                                             isComicsEmpty: presenter?.isComicsEmpty ?? true))
         return comicsDisplayView
     }()
     
     private func setupConstraints() {
         NSLayoutConstraint.activate([
-            eventHighlight.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 8),
-            eventHighlight.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor, constant: 8),
-            eventHighlight.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor)
-        ])
-        
-        NSLayoutConstraint.activate([
-            comicsDisplayView.topAnchor.constraint(equalTo: eventHighlight.bottomAnchor),
+            comicsDisplayView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 8),
             comicsDisplayView.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor),
             comicsDisplayView.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor),
             comicsDisplayView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)
@@ -57,11 +47,16 @@ extension EventComicsView: EventComicsPresenterToViewProtocol {
         
         backgroundColor = .white
         eventHighlight.configure(with: presenter.eventItem)
+        if presenter.isComicsEmpty {
+            comicsDisplayView.configureAsEmpty(highlightView: eventHighlight, message: "No available comics to discuss")
+        } else {
+            comicsDisplayView.configureTable(comicDisplay: ComicDisplayStruct(dataSource: self, delegate: self))
+        }
         setupConstraints()
     }
 }
 
-extension EventComicsView: UITableViewDataSource {
+extension EventComicsView: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return presenter?.comicsCount ?? 0
     }
@@ -75,5 +70,9 @@ extension EventComicsView: UITableViewDataSource {
         
         cell.configure(with: presenter.comicAt(row: indexPath.row))
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return HighlightComicView(highlightView: eventHighlight, message: "Comics to discuss")
     }
 }

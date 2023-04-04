@@ -1,5 +1,5 @@
 //
-//  EmptyComicsView.swift
+//  HighlightComicView.swift
 //  Marvel app
 //
 //  Created by Salvador on 4/3/23.
@@ -7,19 +7,8 @@
 
 import UIKit
 
-final class EmptyComicsView: UIView {
-    private lazy var imageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(imageView)
-        imageView.contentMode = .scaleAspectFit
-        NSLayoutConstraint.activate([
-            imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor),
-            imageView.heightAnchor.constraint(equalToConstant: 200)
-        ])
-        imageView.image = .tray
-        return imageView
-    }()
+final class HighlightComicView: UIView {
+    let highlightView: UIView
     
     private lazy var messageLabel: UILabel = {
         let messageLabel = UILabel()
@@ -32,10 +21,11 @@ final class EmptyComicsView: UIView {
         return messageLabel
     }()
     
-    init(message: String) {
+    init(highlightView: UIView, message: String) {
+        self.highlightView = highlightView
         super.init(frame: .zero)
         backgroundColor = .systemBackground
-        messageLabel.text = message
+        messageLabel.text = message.uppercased()
         setupConstraints()
     }
     
@@ -44,13 +34,17 @@ final class EmptyComicsView: UIView {
     }
     
     private func setupConstraints() {
+        highlightView.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(highlightView)
+        
         NSLayoutConstraint.activate([
-            imageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 30),
-            imageView.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
+            highlightView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+            highlightView.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor),
+            highlightView.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor)
         ])
         
         NSLayoutConstraint.activate([
-            messageLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 12),
+            messageLabel.topAnchor.constraint(equalTo: highlightView.bottomAnchor, constant: 40),
             messageLabel.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor, constant: 8),
             messageLabel.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
             messageLabel.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),

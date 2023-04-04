@@ -19,8 +19,8 @@ final class CharacterComicsView: UIView {
     
     private lazy var characterHighlight: CharacterHighlight = {
         let characterHighlight = CharacterHighlight()
-        characterHighlight.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(characterHighlight)
+//        characterHighlight.translatesAutoresizingMaskIntoConstraints = false
+//        addSubview(characterHighlight)
         return characterHighlight
     }()
     
@@ -28,19 +28,20 @@ final class CharacterComicsView: UIView {
         let comicsTableView = ComicsTableView()
         comicsTableView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(comicsTableView)
-        comicsTableView.configure(with: self, headingText: "Appears in these comics")
+        comicsTableView.configure(with: self, delegate: self)
         return comicsTableView
     }()
     
     private func setupConstraints() {
-        NSLayoutConstraint.activate([
-            characterHighlight.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
-            characterHighlight.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor, constant: 8),
-            characterHighlight.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor)
-        ])
+//        NSLayoutConstraint.activate([
+//            characterHighlight.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+//            characterHighlight.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor, constant: 8),
+//            characterHighlight.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor)
+//        ])
         
         NSLayoutConstraint.activate([
-            comicsTableView.topAnchor.constraint(equalTo: characterHighlight.bottomAnchor),
+//            comicsTableView.topAnchor.constraint(equalTo: characterHighlight.bottomAnchor),
+            comicsTableView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
             comicsTableView.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor),
             comicsTableView.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor),
             comicsTableView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)
@@ -59,7 +60,7 @@ extension CharacterComicsView: CharacterComicsPresenterToViewProtocol {
     }
 }
 
-extension CharacterComicsView: UITableViewDataSource {
+extension CharacterComicsView: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return presenter?.comicsCount ?? 0
     }
@@ -73,5 +74,9 @@ extension CharacterComicsView: UITableViewDataSource {
         
         cell.configure(with: presenter.comicAt(row: indexPath.row))
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return characterHighlight
     }
 }
