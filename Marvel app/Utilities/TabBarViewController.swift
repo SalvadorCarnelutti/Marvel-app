@@ -36,7 +36,7 @@ extension TabBarViewController {
     static var firstTab: UIViewController {
         let charactersPresenter = CharactersPresenter()
         let charactersView = CharactersView()
-        let charactersInteractor = CharactersInteractor()
+        let charactersInteractor = CharactersInteractor(charactersRepository: CharactersRepository())
         let charactersRouter = CharactersRouter()
         
         CharactersConfigurator.injectDependencies(view: charactersView,
@@ -48,7 +48,7 @@ extension TabBarViewController {
     static var secondTab: UIViewController {
         let eventsPresenter = EventsPresenter()
         let eventsView = EventsView()
-        let eventsInteractor = EventsInteractor()
+        let eventsInteractor = EventsInteractor(eventsRepository: EventsRepository())
         let eventRouter = EventsRouter()
         
         EventsConfigurator.injectDependencies(view: eventsView,

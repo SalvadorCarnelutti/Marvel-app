@@ -15,7 +15,13 @@ protocol CharactersPresenterToInteractorProtocol: AnyObject, ItemTableViewProtoc
 
 // MARK: - PresenterToInteractorProtocol
 final class CharactersInteractor: CharactersPresenterToInteractorProtocol {
-    let session = Session(eventMonitors: [AlamofireLogger()])
+    private let charactersRepository: CharactersRepositoryProtocol
+//    let session = Session(eventMonitors: [AlamofireLogger()])
+    
+    init(charactersRepository: CharactersRepositoryProtocol) {
+        self.charactersRepository = charactersRepository
+    }
+    
     var characterItems = [CharacterCellItem]()
     
     var itemsCount: Int {
@@ -27,66 +33,34 @@ final class CharactersInteractor: CharactersPresenterToInteractorProtocol {
     }
     
     func loadCharacters(onSuccess: @escaping () -> ()) {
-        session.request("https://gateway.marvel.com/v1/public/characters",
-                        parameters: [
-                            "apikey": CryptoHelper.apiKey,
-                            "hash" : CryptoHelper.hash,
-                            "ts" : "1",
-                            "limit" : "25"
-                        ]).validate(statusCode: 200...299)
-            .responseDecodable(of: CharacterResponse.self) { [weak self] (response) in
-                switch response.result {
-                case .success(let events):
-                    self?.characterItems = events.data.results.map { $0.getItem }
-                    onSuccess()
-                case .failure(let error):
-                    print(error)
-                }
+        charactersRepository.getCharacters { [weak self] result in
+            switch result {
+            case .success(let characters):
+                self?.characterItems = characters.data.results.map { $0.getItem }
+                onSuccess()
+            case .failure:
+                print("Error")
             }
+        }
     }
     
     func loadComicsAt(row: Int, onSuccess: @escaping (CharacterComics) -> ()) {
-        session.request("https://gateway.marvel.com/v1/public/characters/\(characterItems[row].id)/comics",
-                        parameters: [
-                            "apikey": CryptoHelper.publicKey,
-                            "hash" : CryptoHelper.hash,
-                            "ts" : "1"
-                        ]).validate(statusCode: 200...299)
-            .responseDecodable(of: ComicsResponse.self) { [weak self] (response) in
-                guard let self = self else { return }
-                switch response.result {
-                case .success(let events):
-                    let characterItem = self.characterItems[row]
-                    let comicItems = events.data.results.map { $0.title }
-                    onSuccess(CharacterComics(characterItem: characterItem, comicItems: comicItems))
-                case .failure(let error):
-                    print(error)
-                }
+        charactersRepository.loadComicsFor(id: characterItems[row].id) { [weak self] result in
+            guard let self = self else { return }
+            
+            switch result {
+            case .success(let comics):
+                let characterItem = self.characterItems[row]
+                let comicItems = comics.data.results.map { $0.title }
+                onSuccess(CharacterComics(characterItem: characterItem, comicItems: comicItems))
+            case .failure:
+                print("Error")
             }
+        }
     }
 }
 
 // MARK: - Characters Entity
-struct CharacterResponse: Codable {
-    let data: Characters
-}
-
-struct Characters: Codable {
-    let results: [Character]
-}
-
-struct Character: Codable {
-    let id: Int
-    let thumbnail: Image
-    let name: String
-    let description: String?
-}
-
-extension Character {
-    var getItem: CharacterCellItem {
-        CharacterCellItem(id: id, imageURL: thumbnail.imageURL, heading: name, description: description ?? "")
-    }
-}
 
 struct CharacterCellItem: Item {
     let id: Int
