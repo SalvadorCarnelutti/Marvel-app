@@ -33,6 +33,10 @@ final class CharacterComicsInteractor: CharacterComicsPresenterToInteractorProto
         return characterComics.comicItems.count
     }
     
+    var isComicsEmpty: Bool {
+        characterComics.comicItems.isEmpty
+    }
+    
     func comicAt(row: Int) -> String {
         characterComics.comicItems[row]
     }

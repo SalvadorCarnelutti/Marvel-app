@@ -17,11 +17,7 @@ final class EventComicsView: UIView {
     // MARK: - Properties
     weak var presenter: EventComicsViewToPresenterProtocol?
     
-    private lazy var eventHighlight: EventHighlight = {
-        let eventHighlight = EventHighlight()
-        eventHighlight.translatesAutoresizingMaskIntoConstraints = false
-        return eventHighlight
-    }()
+    private let eventHighlight = EventHighlight()
     
     private lazy var comicsDisplayView: ComicsDisplayView = {
         let comicsDisplayView = ComicsDisplayView()

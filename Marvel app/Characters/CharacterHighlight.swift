@@ -50,7 +50,7 @@ final class CharacterHighlight: UIView {
             descriptionLabel.topAnchor.constraint(equalTo: characterImageView.bottomAnchor, constant: 22),
             descriptionLabel.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor, constant: 52),
             descriptionLabel.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
-            descriptionLabel.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -17)
+            descriptionLabel.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)
         ])
     }
     
