@@ -11,10 +11,14 @@ import Foundation
 final class CharactersConfigurator {
     static func injectDependencies(view: CharactersPresenterToViewProtocol,
                                    interactor: CharactersPresenterToInteractorProtocol,
-                                   presenter: CharactersPresenter) {
+                                   presenter: CharactersPresenter,
+                                   router: CharactersPresenterToRouterProtocol) {
         presenter.interactor = interactor
 
         view.presenter = presenter
         presenter.viewCharacters = view
+        
+        router.viewController = presenter
+        presenter.router = router
     }
 }

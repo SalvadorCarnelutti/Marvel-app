@@ -9,12 +9,15 @@
 
 import UIKit
 
-protocol CharactersViewToPresenterProtocol: UIViewController {
+protocol CharactersViewToPresenterProtocol: UIViewController, ItemTableViewProtocol {
+    func loadCharacters(onSuccess: @escaping () -> ())
+    func loadComicsAt(row: Int)
 }
 
 final class CharactersPresenter: TabViewController {
     var viewCharacters: CharactersPresenterToViewProtocol!
     var interactor: CharactersPresenterToInteractorProtocol!
+    var router: CharactersPresenterToRouterProtocol!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,4 +32,19 @@ final class CharactersPresenter: TabViewController {
 
 // MARK: - ViewToPresenterProtocol
 extension CharactersPresenter: CharactersViewToPresenterProtocol {
+    var itemsCount: Int {
+        interactor.itemsCount
+    }
+    
+    func loadCharacters(onSuccess: @escaping () -> ()) {
+        interactor.loadCharacters(onSuccess: onSuccess)
+    }
+    
+    func loadComicsAt(row: Int) {
+        interactor.loadComicsAt(row: row, onSuccess: router.pushComics)
+    }
+    
+    func itemAt(row: Int) -> Item {
+        interactor.itemAt(row: row)
+    }
 }

@@ -9,7 +9,6 @@ import UIKit
 
 protocol EventsPresenterToRouterProtocol: AnyObject {
     var viewController: UIViewController? { get set }
-    // Need to define item parameter
     func presentComics(with eventComics: EventComics)
 }
 

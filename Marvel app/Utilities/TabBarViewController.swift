@@ -37,9 +37,11 @@ extension TabBarViewController {
         let charactersPresenter = CharactersPresenter()
         let charactersView = CharactersView()
         let charactersInteractor = CharactersInteractor()
+        let charactersRouter = CharactersRouter()
+        
         CharactersConfigurator.injectDependencies(view: charactersView,
                                                   interactor: charactersInteractor,
-                                                  presenter: charactersPresenter)
+                                                  presenter: charactersPresenter, router: charactersRouter)
         return charactersPresenter
     }
     

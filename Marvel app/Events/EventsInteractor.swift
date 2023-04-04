@@ -6,12 +6,14 @@
 //  Created by Salvador on 4/1/23.
 //
 //
-import Foundation
 import Alamofire
 
-protocol EventsPresenterToInteractorProtocol: AnyObject {
+protocol ItemTableViewProtocol: AnyObject {
     var itemsCount: Int { get }
     func itemAt(row: Int) -> Item
+}
+
+protocol EventsPresenterToInteractorProtocol: ItemTableViewProtocol {
     func loadEvents(onSuccess: @escaping () -> ())
     func loadComicsAt(row: Int, onSuccess: @escaping (EventComics) -> ())
 }
@@ -106,7 +108,10 @@ struct Image: Codable {
 
 extension Event {
     var getItem: EventCellItem {
-        EventCellItem(id: id, imageURL: thumbnail.imageURL, heading: title, startDate: Date.formatAsDate(start, dateFormat: "yyyy-MM-dd hh:mm:ss"))
+        EventCellItem(id: id,
+                      imageURL: thumbnail.imageURL,
+                      heading: title,
+                      startDate: Date.formatAsDate(start, dateFormat: "yyyy-MM-dd hh:mm:ss"))
     }
 }
 

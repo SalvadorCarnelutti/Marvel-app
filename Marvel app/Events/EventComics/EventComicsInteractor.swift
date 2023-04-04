@@ -8,11 +8,14 @@
 //
 import Foundation
 
-protocol EventComicsPresenterToInteractorProtocol: AnyObject {
-    var eventItem: Item { get }
+protocol ComicsTableViewProtocol: AnyObject {
     var comicsCount: Int { get }
-    var isComicsEmpty: Bool { get }
     func comicAt(row: Int) -> String
+}
+
+protocol EventComicsPresenterToInteractorProtocol: ComicsTableViewProtocol {
+    var eventItem: Item { get }
+    var isComicsEmpty: Bool { get }
 }
 
 // MARK: - PresenterToInteractorProtocol

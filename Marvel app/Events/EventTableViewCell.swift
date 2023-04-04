@@ -12,6 +12,7 @@ class EventTableViewCell: UITableViewCell {
         let eventHighlight = EventHighlight()
         eventHighlight.translatesAutoresizingMaskIntoConstraints = false
         addSubview(eventHighlight)
+        eventHighlight.clipsToBounds = true
         eventHighlight.layer.cornerRadius = 4
         return eventHighlight
     }()

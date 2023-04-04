@@ -9,11 +9,9 @@
 
 import UIKit
 
-protocol EventComicsViewToPresenterProtocol: UIViewController {
+protocol EventComicsViewToPresenterProtocol: UIViewController, ComicsTableViewProtocol {
     var eventItem: Item { get }
-    var comicsCount: Int { get }
     var isComicsEmpty: Bool { get }
-    func comicAt(row: Int) -> String
 }
 
 final class EventComicsPresenter: UIViewController {
