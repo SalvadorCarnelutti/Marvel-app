@@ -15,4 +15,5 @@ extension UIImage {
     static var characters: UIImage { Self.unwrappedImage("person.crop.rectangle.stack") }
     static var events: UIImage { Self.unwrappedImage("calendar.badge.clock") }
     static var logout: UIImage { Self.unwrappedImage("rectangle.portrait.and.arrow.right") }
+    static var xBack: UIImage { Self.unwrappedImage("xmark") }
 }

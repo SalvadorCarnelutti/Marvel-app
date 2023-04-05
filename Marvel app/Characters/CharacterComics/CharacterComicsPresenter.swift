@@ -14,7 +14,7 @@ protocol CharacterComicsViewToPresenterProtocol: UIViewController, ComicsTableVi
     var isComicsEmpty: Bool { get }
 }
 
-final class CharacterComicsPresenter: UIViewController {
+final class CharacterComicsPresenter: BaseViewController {
     var viewCharacterComics: CharacterComicsPresenterToViewProtocol!
     var interactor: CharacterComicsPresenterToInteractorProtocol!
     
@@ -27,6 +27,21 @@ final class CharacterComicsPresenter: UIViewController {
         super.loadView()
         title = interactor.characterName
         view = viewCharacterComics
+        setupCustomBackButton()
+    }
+    
+    @objc private func popViewController() {
+        navigationController?.popViewController(animated: true)
+    }
+    
+    private func setupCustomBackButton() {
+        let backImage = UIImage.xBack.withTintColor(.white, renderingMode: .alwaysOriginal)
+        let backBarButton = UIBarButtonItem(image: backImage,
+                                            style: .plain,
+                                            target: self,
+                                            action: #selector(popViewController))
+        
+        navigationItem.setLeftBarButton(backBarButton, animated: true)
     }
 }
 

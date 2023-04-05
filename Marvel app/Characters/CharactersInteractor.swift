@@ -63,7 +63,7 @@ final class CharactersInteractor: CharactersPresenterToInteractorProtocol {
                     onSuccess(newIndexPaths)
                 }
             case .failure:
-                print("Error")
+                self.viewController?.presentOKAlert(title: "Characters loading error", message: "Unexpected loading error")
             }
         }
     }
@@ -80,7 +80,7 @@ final class CharactersInteractor: CharactersPresenterToInteractorProtocol {
                 let comicItems = comicsResponse.data.results.map { $0.title }
                 onSuccess(CharacterComics(characterItem: characterItem, comicItems: comicItems))
             case .failure:
-                print("Error")
+                self.viewController?.presentOKAlert(title: "Comics loading error", message: "Unexpected loading error")
             }
         }
     }

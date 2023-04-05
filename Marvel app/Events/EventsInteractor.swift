@@ -40,7 +40,8 @@ final class EventsInteractor: EventsPresenterToInteractorProtocol {
     func loadEvents(onSuccess: @escaping () -> ()) {
         viewController?.showLoader()
         eventsRepository.getEvents { [weak self] result in
-            self?.viewController?.hideLoader()
+            guard let self = self else { return }
+            self.viewController?.hideLoader()
             
             switch result {
             case .success(let events):
@@ -48,10 +49,10 @@ final class EventsInteractor: EventsPresenterToInteractorProtocol {
                 let dateSortedEvents = eventsArray.filter { $0.start != nil }.map { $0.getItem }.sorted { $0.startDate! > $1.startDate! }
                 let datelessEvents = eventsArray.filter { $0.start == nil }.map { $0.getItem }
                 let combinedEvents = dateSortedEvents + datelessEvents
-                self?.eventItems = combinedEvents
+                self.eventItems = combinedEvents
                 onSuccess()
             case .failure:
-                print("Error")
+                self.viewController?.presentOKAlert(title: "Events loading error", message: "Unexpected loading error")
             }
         }
     }
@@ -68,7 +69,7 @@ final class EventsInteractor: EventsPresenterToInteractorProtocol {
                 let comicItems = comics.data.results.map { $0.title }
                 onSuccess(EventComics(eventItem: eventItem, comicItems: comicItems))
             case .failure:
-                print("Error")
+                self.viewController?.presentOKAlert(title: "Comics loading error", message: "Unexpected loading error")
             }
         }
     }

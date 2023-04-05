@@ -42,4 +42,8 @@ extension AppDelegate: FUIAuthDelegate {
     static var singleton: AppDelegate {
         UIApplication.shared.delegate as! AppDelegate
     }
+    
+    static var authUI: FUIAuth {
+        singleton.authUI
+    }
 }

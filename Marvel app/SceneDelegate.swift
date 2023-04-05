@@ -6,11 +6,13 @@
 //
 
 import UIKit
+import FirebaseCore
+import FirebaseEmailAuthUI
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+    var appCordinator: AppCoordinator!
 
     var window: UIWindow?
-
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
@@ -19,8 +21,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
 
         let window = UIWindow(windowScene: windowScene)
-        let viewController = TabBarViewController()
-        window.rootViewController = viewController
+        AppCoordinatorConfigurator.injectDependencies(appCoordinator: AppCoordinator(),
+                                                      sceneDelegate: self)
+        let authViewController = AppDelegate.authUI.authViewController()
+        AppDelegate.authUI.delegate = appCordinator
+        window.rootViewController = authViewController
         self.window = window
         window.makeKeyAndVisible()
     }
@@ -54,3 +59,21 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 }
 
+class AppCoordinator: NSObject, FUIAuthDelegate {
+    weak var sceneDelegate: SceneDelegate?
+    
+    func authUI(_ authUI: FUIAuth, didSignInWith user: User?, error: Error?) {
+        guard let error = error else {
+            sceneDelegate?.window?.rootViewController = TabBarViewController()
+            return
+        }
+    }
+}
+
+class AppCoordinatorConfigurator {
+    static func injectDependencies(appCoordinator: AppCoordinator,
+                                   sceneDelegate: SceneDelegate) {
+        sceneDelegate.appCordinator = appCoordinator
+        appCoordinator.sceneDelegate = sceneDelegate
+    }
+}

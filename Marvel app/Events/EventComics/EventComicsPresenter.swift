@@ -14,7 +14,7 @@ protocol EventComicsViewToPresenterProtocol: UIViewController, ComicsTableViewPr
     var isComicsEmpty: Bool { get }
 }
 
-final class EventComicsPresenter: UIViewController {
+final class EventComicsPresenter: BaseViewController {
     var viewEventComics: EventComicsPresenterToViewProtocol!
     var interactor: EventComicsPresenterToInteractorProtocol!
     

@@ -30,6 +30,7 @@ class BaseViewController: UIViewController, BaseViewProtocol {
         super.viewDidLoad()
         setupViews()
         setupConstraints()
+        setupNavigationBarAppearance()
     }
     
     func showLoader() {
@@ -54,5 +55,16 @@ class BaseViewController: UIViewController, BaseViewProtocol {
     private func setupConstraints() {
         activityIndicator.centerInSuperview()
         activityIndicator.constraintSizeWithEqualSides(Constraints.ActivityIndicatorSize)
+    }
+    
+    private func setupNavigationBarAppearance() {
+        // Make the navigation bar's black with white text.
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = UIColor.black
+        appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+        navigationItem.standardAppearance = appearance
+        navigationItem.scrollEdgeAppearance = appearance
+        navigationItem.compactAppearance = appearance // For iPhone small navigation bar in landscape.
     }
 }

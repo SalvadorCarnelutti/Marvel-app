@@ -11,14 +11,18 @@ class TabViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "Marvel Challenge"
-        let image = UIImage.logout.withTintColor(.black, renderingMode: .alwaysOriginal)
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: nil,
-                                                            image: image,
+                                                            image: UIImage.logout,
                                                             target: self,
                                                             action: #selector(logoutTapped))
     }
     
-    @objc func logoutTapped() {
-        // TBD
+    @objc private func logoutTapped() {
+        do {
+            try AppDelegate.singleton.authUI.signOut()
+            view.window?.rootViewController = AppDelegate.singleton.authUI.authViewController()
+        } catch {
+            presentOKAlert(title: "Logout error", message: "Unexpected logout error")
+        }
     }
 }
