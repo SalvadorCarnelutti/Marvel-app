@@ -30,7 +30,6 @@
 		B441D52029DA6F1A007CC76D /* EventComicsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B441D51C29DA6F1A007CC76D /* EventComicsInteractor.swift */; };
 		B441D52129DA6F1A007CC76D /* EventComicsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B441D51D29DA6F1A007CC76D /* EventComicsView.swift */; };
 		B441D52229DA6F1A007CC76D /* EventComicsConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B441D51E29DA6F1A007CC76D /* EventComicsConfigurator.swift */; };
-		B441D52429DA7121007CC76D /* Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = B441D52329DA7121007CC76D /* Alamofire.swift */; };
 		B441D52629DA7B2E007CC76D /* EventsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B441D52529DA7B2E007CC76D /* EventsRouter.swift */; };
 		B441D52829DB1AD0007CC76D /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = B441D52729DB1AD0007CC76D /* String.swift */; };
 		B441D52A29DB20C4007CC76D /* CryptoHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B441D52929DB20C4007CC76D /* CryptoHelper.swift */; };
@@ -104,7 +103,6 @@
 		B441D51C29DA6F1A007CC76D /* EventComicsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventComicsInteractor.swift; sourceTree = "<group>"; };
 		B441D51D29DA6F1A007CC76D /* EventComicsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventComicsView.swift; sourceTree = "<group>"; };
 		B441D51E29DA6F1A007CC76D /* EventComicsConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventComicsConfigurator.swift; sourceTree = "<group>"; };
-		B441D52329DA7121007CC76D /* Alamofire.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alamofire.swift; sourceTree = "<group>"; };
 		B441D52529DA7B2E007CC76D /* EventsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsRouter.swift; sourceTree = "<group>"; };
 		B441D52729DB1AD0007CC76D /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		B441D52929DB20C4007CC76D /* CryptoHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoHelper.swift; sourceTree = "<group>"; };
@@ -226,7 +224,6 @@
 				B441D51629D9EB0C007CC76D /* UITableView.swift */,
 				B441D51029D90FEF007CC76D /* UITableViewCell.swift */,
 				B441D51429D9D613007CC76D /* Date.swift */,
-				B441D52329DA7121007CC76D /* Alamofire.swift */,
 				B441D52729DB1AD0007CC76D /* String.swift */,
 			);
 			path = Utilities;
@@ -594,7 +591,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B441D52429DA7121007CC76D /* Alamofire.swift in Sources */,
 				B441D50C29D8DB87007CC76D /* TabViewController.swift in Sources */,
 				B441D51929D9F671007CC76D /* EventHighlight.swift in Sources */,
 				B441D52629DA7B2E007CC76D /* EventsRouter.swift in Sources */,

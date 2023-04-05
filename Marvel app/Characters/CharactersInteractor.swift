@@ -6,23 +6,27 @@
 //  Created by Salvador on 4/1/23.
 //
 //
-import Alamofire
+import Foundation
 
 protocol CharactersPresenterToInteractorProtocol: AnyObject, ItemTableViewProtocol {
-    func loadCharacters(onSuccess: @escaping () -> ())
+    func loadCharacters(onSuccess: @escaping ([IndexPath]) -> ())
     func loadComicsAt(row: Int, onSuccess: @escaping (CharacterComics) -> ())
 }
 
 // MARK: - PresenterToInteractorProtocol
 final class CharactersInteractor: CharactersPresenterToInteractorProtocol {
     private let charactersRepository: CharactersRepositoryProtocol
-//    let session = Session(eventMonitors: [AlamofireLogger()])
+    private let pullRate: Int
+    private var characterItems = [CharacterCellItem]()
     
-    init(charactersRepository: CharactersRepositoryProtocol) {
+    // Keep track if there are more pages to pull from and if a fetch is already in process
+    var isThereMore = true
+    var isFetchInProgress = false
+    
+    init(charactersRepository: CharactersRepositoryProtocol, pullRate: Int = 15) {
         self.charactersRepository = charactersRepository
+        self.pullRate = pullRate
     }
-    
-    var characterItems = [CharacterCellItem]()
     
     var itemsCount: Int {
         characterItems.count
@@ -32,12 +36,28 @@ final class CharactersInteractor: CharactersPresenterToInteractorProtocol {
         characterItems[row]
     }
     
-    func loadCharacters(onSuccess: @escaping () -> ()) {
-        charactersRepository.getCharacters { [weak self] result in
+    func loadCharacters(onSuccess: @escaping ([IndexPath]) -> ()) {
+        guard isThereMore, !isFetchInProgress else {
+            return
+        }
+        isFetchInProgress = true
+        
+        charactersRepository.getCharacters(limit: pullRate, offset: itemsCount) { [weak self] result in
+            guard let self = self else { return }
+            self.isFetchInProgress = false
+            
             switch result {
-            case .success(let characters):
-                self?.characterItems = characters.data.results.map { $0.getItem }
-                onSuccess()
+            case .success(let charactersResponse):
+                let characters = charactersResponse.data.results
+                let newIndexPaths = self.newIndexPaths(newItemsCount: characters.count)
+                self.characterItems += characters.map { $0.getItem }
+                
+                // Check if we have reached the end of pullable items
+                self.isThereMore = self.itemsCount < charactersResponse.data.total
+                
+                DispatchQueue.main.async {
+                    onSuccess(newIndexPaths)
+                }
             case .failure:
                 print("Error")
             }
@@ -49,18 +69,23 @@ final class CharactersInteractor: CharactersPresenterToInteractorProtocol {
             guard let self = self else { return }
             
             switch result {
-            case .success(let comics):
+            case .success(let comicsResponse):
                 let characterItem = self.characterItems[row]
-                let comicItems = comics.data.results.map { $0.title }
+                let comicItems = comicsResponse.data.results.map { $0.title }
                 onSuccess(CharacterComics(characterItem: characterItem, comicItems: comicItems))
             case .failure:
                 print("Error")
             }
         }
     }
+    
+    // This must be run before updating characterItems on each new character batch pull
+    private func newIndexPaths(newItemsCount: Int) -> [IndexPath] {
+        let startIndex = itemsCount
+        let endIndex = startIndex + newItemsCount
+        return (startIndex..<endIndex).map { IndexPath(row: $0, section: 0) }
+    }
 }
-
-// MARK: - Characters Entity
 
 struct CharacterCellItem: Item {
     let id: Int

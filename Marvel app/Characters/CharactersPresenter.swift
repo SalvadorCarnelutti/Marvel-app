@@ -10,7 +10,7 @@
 import UIKit
 
 protocol CharactersViewToPresenterProtocol: UIViewController, ItemTableViewProtocol {
-    func loadCharacters(onSuccess: @escaping () -> ())
+    func loadCharacters(onSuccess: @escaping ([IndexPath]) -> ())
     func loadComicsAt(row: Int)
 }
 
@@ -36,7 +36,7 @@ extension CharactersPresenter: CharactersViewToPresenterProtocol {
         interactor.itemsCount
     }
     
-    func loadCharacters(onSuccess: @escaping () -> ()) {
+    func loadCharacters(onSuccess: @escaping ([IndexPath]) -> ()) {
         interactor.loadCharacters(onSuccess: onSuccess)
     }
     

@@ -6,7 +6,7 @@
 //  Created by Salvador on 4/1/23.
 //
 //
-import Alamofire
+import Foundation
 
 protocol ItemTableViewProtocol: AnyObject {
     var itemsCount: Int { get }
@@ -22,7 +22,6 @@ protocol EventsPresenterToInteractorProtocol: ItemTableViewProtocol {
 final class EventsInteractor: EventsPresenterToInteractorProtocol {
     private let eventsRepository: EventsRepositoryProtocol
     var eventItems = [EventCellItem]()
-//    let session = Session(eventMonitors: [AlamofireLogger()])
     
     init(eventsRepository: EventsRepositoryProtocol) {
         self.eventsRepository = eventsRepository

@@ -8,17 +8,19 @@
 import Foundation
 
 protocol CharactersRepositoryProtocol {
-    func getCharacters(onCompletion completionHandler: @escaping (Result<CharactersResponse, Error>) -> Void)
+    func getCharacters(limit: Int, offset: Int, onCompletion completionHandler: @escaping (Result<CharactersResponse, Error>) -> Void)
     func loadComicsFor(id: Int, onCompletion completionHandler: @escaping (Result<ComicsResponse, Error>) -> Void)
 }
 
 class CharactersRepository: CharactersRepositoryProtocol {
-    func getCharacters(onCompletion completionHandler: @escaping (Result<CharactersResponse, Error>) -> Void) {
+    func getCharacters(limit: Int, offset: Int, onCompletion completionHandler: @escaping (Result<CharactersResponse, Error>) -> Void) {
         let charactersUrl: String = "https://gateway.marvel.com/v1/public/characters"
-        let params = [
+        let params: [String: Any] = [
             "apikey": CryptoHelper.apiKey,
             "hash" : CryptoHelper.hash,
-            "ts" : "1"
+            "ts" : "1",
+            "limit": limit,
+            "offset": offset
         ]
         
         RestClient<CharactersResponse>(httpManager: HTTPManager()).queryGet(charactersUrl, params: params) { result in

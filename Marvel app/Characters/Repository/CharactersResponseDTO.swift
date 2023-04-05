@@ -12,6 +12,7 @@ struct CharactersResponse: Codable {
 }
 
 struct Characters: Codable {
+    let total: Int
     let results: [Character]
 }
 
