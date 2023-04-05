@@ -14,12 +14,14 @@ protocol ItemTableViewProtocol: AnyObject {
 }
 
 protocol EventsPresenterToInteractorProtocol: ItemTableViewProtocol {
+    var viewController: BaseViewProtocol? { get set }
     func loadEvents(onSuccess: @escaping () -> ())
     func loadComicsAt(row: Int, onSuccess: @escaping (EventComics) -> ())
 }
 
 // MARK: - PresenterToInteractorProtocol
 final class EventsInteractor: EventsPresenterToInteractorProtocol {
+    weak var viewController: BaseViewProtocol?
     private let eventsRepository: EventsRepositoryProtocol
     var eventItems = [EventCellItem]()
     
@@ -36,7 +38,10 @@ final class EventsInteractor: EventsPresenterToInteractorProtocol {
     }
     
     func loadEvents(onSuccess: @escaping () -> ()) {
+        viewController?.showLoader()
         eventsRepository.getEvents { [weak self] result in
+            self?.viewController?.hideLoader()
+            
             switch result {
             case .success(let events):
                 let eventsArray = events.data.results
@@ -52,8 +57,10 @@ final class EventsInteractor: EventsPresenterToInteractorProtocol {
     }
     
     func loadComicsAt(row: Int, onSuccess: @escaping (EventComics) -> ()) {
+        viewController?.showLoader()
         eventsRepository.loadComicsFor(id: eventItems[row].id) { [weak self] result in
             guard let self = self else { return }
+            self.viewController?.hideLoader()
             
             switch result {
             case .success(let comics):

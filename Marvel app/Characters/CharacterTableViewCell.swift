@@ -37,7 +37,7 @@ class CharacterTableViewCell: UITableViewCell {
         descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
         containerView.addSubview(descriptionLabel)
         descriptionLabel.font = UIFont.systemFont(ofSize: 14)
-        descriptionLabel.numberOfLines = 3
+        descriptionLabel.numberOfLines = 2
         descriptionLabel.lineBreakMode = .byTruncatingTail
         return descriptionLabel
     }()
@@ -67,7 +67,7 @@ class CharacterTableViewCell: UITableViewCell {
             containerView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 4),
             containerView.centerYAnchor.constraint(equalTo: safeAreaLayoutGuide.centerYAnchor),
             containerView.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor),
-            containerView.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor),
+            containerView.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor)
         ])
         
         NSLayoutConstraint.activate([

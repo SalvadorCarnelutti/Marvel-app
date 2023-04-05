@@ -14,6 +14,7 @@ final class EventsConfigurator {
                                    presenter: EventsPresenter,
                                    router: EventsPresenterToRouterProtocol) {
         presenter.interactor = interactor
+        interactor.viewController = presenter
 
         view.presenter = presenter
         presenter.viewEvents = view

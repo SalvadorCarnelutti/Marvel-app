@@ -27,13 +27,7 @@ final class CharacterComicsView: UIView {
     }()
     
     private func setupConstraints() {
-        
-        NSLayoutConstraint.activate([
-            comicsDisplayView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
-            comicsDisplayView.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor),
-            comicsDisplayView.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor),
-            comicsDisplayView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)
-        ])
+        comicsDisplayView.pinToSuperview()
     }
 }
 
@@ -72,5 +66,4 @@ extension CharacterComicsView: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         return HighlightComicView(highlightView: characterHighlight, message: "Appears in these comics")
     }
-
 }

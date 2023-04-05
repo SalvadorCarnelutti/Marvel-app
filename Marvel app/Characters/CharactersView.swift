@@ -81,11 +81,9 @@ extension CharactersView: UITableViewDataSource, UITableViewDelegate, UITableVie
     
     func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
         guard let presenter = presenter else { return }
-        print("ItemCount: \(presenter.itemsCount)")
+        
         if indexPaths.contains(where: isLoadingCell) {
-            print("IndexPaths: \(indexPaths)")
             presenter.loadCharacters { newIndexPaths in
-                print("IndexPaths: \(newIndexPaths)")
                 // We are inserting new rows, not reloading them
                 tableView.insertRows(at: newIndexPaths, with: .automatic)
             }

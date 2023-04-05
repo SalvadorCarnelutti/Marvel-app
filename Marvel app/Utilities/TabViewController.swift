@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TabViewController: UIViewController {
+class TabViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "Marvel Challenge"

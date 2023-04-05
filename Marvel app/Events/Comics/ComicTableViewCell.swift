@@ -17,6 +17,15 @@ final class ComicTableViewCell: UITableViewCell {
         return descriptionLabel
     }()
     
+    private lazy var separatorLine: UIView = {
+        let separatorLine = UIView()
+        separatorLine.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(separatorLine)
+        separatorLine.heightAnchor.constraint(equalToConstant: 1).isActive = true
+        separatorLine.backgroundColor = .lightGray
+        return separatorLine
+    }()
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupConstraints()
@@ -32,6 +41,12 @@ final class ComicTableViewCell: UITableViewCell {
             descriptionLabel.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor, constant: 16),
             descriptionLabel.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
             descriptionLabel.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -20)
+        ])
+        
+        NSLayoutConstraint.activate([
+            separatorLine.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor, constant: 16),
+            separatorLine.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
+            separatorLine.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)
         ])
     }
     

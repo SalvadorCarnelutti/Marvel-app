@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import SDWebImage
 
 class EventHighlight: UIView {
     private lazy var eventImageView: UIImageView = {
@@ -57,7 +56,7 @@ class EventHighlight: UIView {
         NSLayoutConstraint.activate([
             eventImageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 17),
             eventImageView.centerYAnchor.constraint(equalTo: safeAreaLayoutGuide.centerYAnchor),
-            eventImageView.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor, constant: 17),
+            eventImageView.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor, constant: 17)
         ])
         
         NSLayoutConstraint.activate([

@@ -58,6 +58,9 @@
 		B464EC0C29DC98D9007E3804 /* CharactersResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B464EC0B29DC98D9007E3804 /* CharactersResponseDTO.swift */; };
 		B464EC0F29DCAFF2007E3804 /* EventsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B464EC0E29DCAFF2007E3804 /* EventsRepository.swift */; };
 		B464EC1129DCB137007E3804 /* EventsResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B464EC1029DCB137007E3804 /* EventsResponseDTO.swift */; };
+		B4BFFF9029DCFCA300882EAF /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BFFF8F29DCFCA300882EAF /* BaseViewController.swift */; };
+		B4BFFF9229DCFCD400882EAF /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BFFF9129DCFCD400882EAF /* ActivityIndicator.swift */; };
+		B4BFFF9429DCFD0D00882EAF /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BFFF9329DCFD0D00882EAF /* UIView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -135,6 +138,9 @@
 		B464EC0B29DC98D9007E3804 /* CharactersResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersResponseDTO.swift; sourceTree = "<group>"; };
 		B464EC0E29DCAFF2007E3804 /* EventsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsRepository.swift; sourceTree = "<group>"; };
 		B464EC1029DCB137007E3804 /* EventsResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsResponseDTO.swift; sourceTree = "<group>"; };
+		B4BFFF8F29DCFCA300882EAF /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		B4BFFF9129DCFCD400882EAF /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
+		B4BFFF9329DCFD0D00882EAF /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		C7F2AE3C80166EE3998B771E /* Pods_Marvel_app.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Marvel_app.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D472A8A2EC10E7C4CCDC2F58 /* Pods-Marvel app-Marvel appUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Marvel app-Marvel appUITests.release.xcconfig"; path = "Target Support Files/Pods-Marvel app-Marvel appUITests/Pods-Marvel app-Marvel appUITests.release.xcconfig"; sourceTree = "<group>"; };
 		DBC433094115C8210D663187 /* Pods_Marvel_app_Marvel_appUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Marvel_app_Marvel_appUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -198,9 +204,7 @@
 		B441D50229D8DB1F007CC76D /* Events */ = {
 			isa = PBXGroup;
 			children = (
-				B441D52F29DB683B007CC76D /* ComicsTableView.swift */,
-				B441D53129DB6E4B007CC76D /* ComicsDisplayView.swift */,
-				B441D53329DB6F7F007CC76D /* HighlightComicView.swift */,
+				B4BFFF9629DDBFFD00882EAF /* Comics */,
 				B441D51A29DA6F0C007CC76D /* EventComics */,
 				B441D50329D8DB31007CC76D /* EventsPresenter.swift */,
 				B441D50429D8DB31007CC76D /* EventsInteractor.swift */,
@@ -217,14 +221,13 @@
 		B441D50D29D8DC7B007CC76D /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				B4BFFF9529DCFD1E00882EAF /* Extensions */,
 				B4577CED29D79D9F00020AF5 /* TabBarViewController.swift */,
 				B441D52929DB20C4007CC76D /* CryptoHelper.swift */,
 				B441D50B29D8DB87007CC76D /* TabViewController.swift */,
-				B441D50E29D8DC8A007CC76D /* UIImages.swift */,
 				B441D51629D9EB0C007CC76D /* UITableView.swift */,
-				B441D51029D90FEF007CC76D /* UITableViewCell.swift */,
-				B441D51429D9D613007CC76D /* Date.swift */,
-				B441D52729DB1AD0007CC76D /* String.swift */,
+				B4BFFF8F29DCFCA300882EAF /* BaseViewController.swift */,
+				B4BFFF9129DCFCD400882EAF /* ActivityIndicator.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -236,7 +239,6 @@
 				B441D51C29DA6F1A007CC76D /* EventComicsInteractor.swift */,
 				B441D51D29DA6F1A007CC76D /* EventComicsView.swift */,
 				B441D51E29DA6F1A007CC76D /* EventComicsConfigurator.swift */,
-				B441D52B29DB28FB007CC76D /* ComicTableViewCell.swift */,
 			);
 			path = EventComics;
 			sourceTree = "<group>";
@@ -333,6 +335,29 @@
 				B464EC1029DCB137007E3804 /* EventsResponseDTO.swift */,
 			);
 			path = Repository;
+			sourceTree = "<group>";
+		};
+		B4BFFF9529DCFD1E00882EAF /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				B441D50E29D8DC8A007CC76D /* UIImages.swift */,
+				B4BFFF9329DCFD0D00882EAF /* UIView.swift */,
+				B441D51029D90FEF007CC76D /* UITableViewCell.swift */,
+				B441D51429D9D613007CC76D /* Date.swift */,
+				B441D52729DB1AD0007CC76D /* String.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		B4BFFF9629DDBFFD00882EAF /* Comics */ = {
+			isa = PBXGroup;
+			children = (
+				B441D52F29DB683B007CC76D /* ComicsTableView.swift */,
+				B441D53129DB6E4B007CC76D /* ComicsDisplayView.swift */,
+				B441D53329DB6F7F007CC76D /* HighlightComicView.swift */,
+				B441D52B29DB28FB007CC76D /* ComicTableViewCell.swift */,
+			);
+			path = Comics;
 			sourceTree = "<group>";
 		};
 		CC136C169B1C9F57CBA1FFFB /* Pods */ = {
@@ -606,6 +631,8 @@
 				B441D52129DA6F1A007CC76D /* EventComicsView.swift in Sources */,
 				B441D50129D8D70C007CC76D /* CharactersConfigurator.swift in Sources */,
 				B441D50029D8D70C007CC76D /* CharactersView.swift in Sources */,
+				B4BFFF9029DCFCA300882EAF /* BaseViewController.swift in Sources */,
+				B4BFFF9229DCFCD400882EAF /* ActivityIndicator.swift in Sources */,
 				B4577CEA29D79D9F00020AF5 /* AppDelegate.swift in Sources */,
 				B441D52229DA6F1A007CC76D /* EventComicsConfigurator.swift in Sources */,
 				B441D53D29DB9A3C007CC76D /* CharacterComicsInteractor.swift in Sources */,
@@ -614,6 +641,7 @@
 				B441D53029DB683B007CC76D /* ComicsTableView.swift in Sources */,
 				B464EC0A29DC9846007E3804 /* CharactersRepository.swift in Sources */,
 				B464EC0C29DC98D9007E3804 /* CharactersResponseDTO.swift in Sources */,
+				B4BFFF9429DCFD0D00882EAF /* UIView.swift in Sources */,
 				B441D51F29DA6F1A007CC76D /* EventComicsPresenter.swift in Sources */,
 				B464EC0729DC9740007E3804 /* HTTPManager.swift in Sources */,
 				B441D53F29DB9A3C007CC76D /* CharacterComicsConfigurator.swift in Sources */,

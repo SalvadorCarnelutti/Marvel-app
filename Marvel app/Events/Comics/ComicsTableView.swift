@@ -16,6 +16,7 @@ final class ComicsTableView: UIView {
         tableView.register(ComicTableViewCell.self)
         tableView.estimatedRowHeight = UITableView.automaticDimension
         tableView.estimatedSectionHeaderHeight = UITableView.automaticDimension
+        tableView.separatorStyle = .none
         return tableView
     }()
     

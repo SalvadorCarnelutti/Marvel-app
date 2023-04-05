@@ -14,6 +14,7 @@ final class CharactersConfigurator {
                                    presenter: CharactersPresenter,
                                    router: CharactersPresenterToRouterProtocol) {
         presenter.interactor = interactor
+        interactor.viewController = presenter
 
         view.presenter = presenter
         presenter.viewCharacters = view

@@ -9,12 +9,14 @@
 import Foundation
 
 protocol CharactersPresenterToInteractorProtocol: AnyObject, ItemTableViewProtocol {
+    var viewController: BaseViewProtocol? { get set }
     func loadCharacters(onSuccess: @escaping ([IndexPath]) -> ())
     func loadComicsAt(row: Int, onSuccess: @escaping (CharacterComics) -> ())
 }
 
 // MARK: - PresenterToInteractorProtocol
 final class CharactersInteractor: CharactersPresenterToInteractorProtocol {
+    weak var viewController: BaseViewProtocol?
     private let charactersRepository: CharactersRepositoryProtocol
     private let pullRate: Int
     private var characterItems = [CharacterCellItem]()
@@ -42,8 +44,10 @@ final class CharactersInteractor: CharactersPresenterToInteractorProtocol {
         }
         isFetchInProgress = true
         
+        viewController?.showLoader()
         charactersRepository.getCharacters(limit: pullRate, offset: itemsCount) { [weak self] result in
             guard let self = self else { return }
+            self.viewController?.hideLoader()
             self.isFetchInProgress = false
             
             switch result {
@@ -65,8 +69,10 @@ final class CharactersInteractor: CharactersPresenterToInteractorProtocol {
     }
     
     func loadComicsAt(row: Int, onSuccess: @escaping (CharacterComics) -> ()) {
+        viewController?.showLoader()
         charactersRepository.loadComicsFor(id: characterItems[row].id) { [weak self] result in
             guard let self = self else { return }
+            self.viewController?.hideLoader()
             
             switch result {
             case .success(let comicsResponse):

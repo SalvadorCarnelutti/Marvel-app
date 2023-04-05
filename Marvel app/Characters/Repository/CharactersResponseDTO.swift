@@ -24,8 +24,16 @@ struct Character: Codable {
 }
 
 extension Character {
+    var characterDescription: String {
+        guard let description = description, !description.isEmpty else {
+            return "Bio unavailable"
+        }
+        
+        return description
+    }
+    
     var getItem: CharacterCellItem {
-        CharacterCellItem(id: id, imageURL: thumbnail.imageURL, heading: name, description: description ?? "")
+        CharacterCellItem(id: id, imageURL: thumbnail.imageURL, heading: name, description: characterDescription)
     }
 }
 
