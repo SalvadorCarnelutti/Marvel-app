@@ -11,6 +11,8 @@ import UIKit
 protocol EventComicsPresenterToViewProtocol: UIView {
     var presenter: EventComicsViewToPresenterProtocol? { get set }
     func loadView()
+    func configureAsEmpty()
+    func configureTableView()
 }
 
 final class EventComicsView: UIView {
@@ -38,12 +40,16 @@ extension EventComicsView: EventComicsPresenterToViewProtocol {
         
         backgroundColor = .white
         eventHighlight.configure(with: presenter.eventItem)
-        if presenter.isComicsEmpty {
-            comicsDisplayView.configureAsEmpty(highlightView: eventHighlight, message: "No available comics to discuss")
-        } else {
-            comicsDisplayView.configureTableWith(dataSource: self, delegate: self)
-        }
         setupConstraints()
+        presenter.viewLoaded()
+    }
+    
+    func configureAsEmpty() {
+        comicsDisplayView.configureAsEmpty(highlightView: eventHighlight, message: "No available comics to discuss")
+    }
+    
+    func configureTableView() {
+        comicsDisplayView.configureTableViewWith(dataSource: self, delegate: self)
     }
 }
 

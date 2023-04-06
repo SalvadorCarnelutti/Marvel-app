@@ -7,13 +7,6 @@
 
 import UIKit
 
-// TODO: Move to somewhere else
-protocol Item {
-    var imageURL: URL { get }
-    var heading: String { get }
-    var description: String { get }
-}
-
 extension UITableViewCell {
     static var identifier: String {
         String(describing: self)

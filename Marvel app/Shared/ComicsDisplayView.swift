@@ -34,7 +34,7 @@ final class ComicsDisplayView: UIView {
         stackView.addArrangedSubview(spacer)
     }
     
-    func configureTableWith(dataSource: UITableViewDataSource?, delegate: UITableViewDelegate?) {
+    func configureTableViewWith(dataSource: UITableViewDataSource?, delegate: UITableViewDelegate?) {
         let comicsTableView = ComicsTableView()
         comicsTableView.configureWith(dataSource: dataSource, delegate: delegate)
         stackView.addArrangedSubview(comicsTableView)

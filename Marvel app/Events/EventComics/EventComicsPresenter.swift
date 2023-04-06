@@ -11,7 +11,7 @@ import UIKit
 
 protocol EventComicsViewToPresenterProtocol: UIViewController, ComicsTableViewProtocol {
     var eventItem: Item { get }
-    var isComicsEmpty: Bool { get }
+    func viewLoaded()
 }
 
 final class EventComicsPresenter: BaseViewController {
@@ -48,12 +48,16 @@ extension EventComicsPresenter: EventComicsViewToPresenterProtocol {
         eventComics.comicItems.count
     }
     
-    var isComicsEmpty: Bool {
-        eventComics.comicItems.isEmpty
-    }
-    
     func comicAt(row: Int) -> String {
         eventComics.comicItems[row]
+    }
+    
+    func viewLoaded() {
+        if eventComics.comicItems.isEmpty {
+            viewEventComics.configureAsEmpty()
+        } else {
+            viewEventComics.configureTableView()
+        }
     }
 }
 

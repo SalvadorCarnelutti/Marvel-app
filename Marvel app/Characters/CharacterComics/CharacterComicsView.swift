@@ -11,6 +11,8 @@ import UIKit
 protocol CharacterComicsPresenterToViewProtocol: UIView {
     var presenter: CharacterComicsViewToPresenterProtocol? { get set }
     func loadView()
+    func configureAsEmpty()
+    func configureTableView()
 }
 
 final class CharacterComicsView: UIView {
@@ -38,14 +40,18 @@ extension CharacterComicsView: CharacterComicsPresenterToViewProtocol {
         
         backgroundColor = .white
         characterHighlight.configure(with: presenter.characterItem)
-        // TODO: View should be dumb
-        if presenter.isComicsEmpty {
-            comicsDisplayView.configureAsEmpty(highlightView: characterHighlight, message: "No available comics to discuss")
-        } else {
-            comicsDisplayView.configureTableWith(dataSource: self, delegate: self)
-        }
         setupConstraints()
+        presenter.viewLoaded()
     }
+    
+    func configureAsEmpty() {
+        comicsDisplayView.configureAsEmpty(highlightView: characterHighlight, message: "No available comics to discuss")
+    }
+    
+    func configureTableView() {
+        comicsDisplayView.configureTableViewWith(dataSource: self, delegate: self)
+    }
+
 }
 
 extension CharacterComicsView: UITableViewDataSource, UITableViewDelegate {

@@ -9,15 +9,9 @@
 
 import UIKit
 
-protocol ComicsTableViewProtocol: AnyObject {
-    var comicsCount: Int { get }
-    var isComicsEmpty: Bool { get }
-    func comicAt(row: Int) -> String
-}
-
 protocol CharacterComicsViewToPresenterProtocol: UIViewController, ComicsTableViewProtocol {
     var characterItem: Item { get }
-    var isComicsEmpty: Bool { get }
+    func viewLoaded()
 }
 
 final class CharacterComicsPresenter: BaseViewController {
@@ -70,12 +64,16 @@ extension CharacterComicsPresenter: CharacterComicsViewToPresenterProtocol {
         characterComics.comicItems.count
     }
     
-    var isComicsEmpty: Bool {
-        characterComics.comicItems.isEmpty
-    }
-    
     func comicAt(row: Int) -> String {
         characterComics.comicItems[row]
+    }
+    
+    func viewLoaded() {
+        if characterComics.comicItems.isEmpty {
+            viewCharacterComics.configureAsEmpty()
+        } else {
+            viewCharacterComics.configureTableView()
+        }
     }
 }
 
