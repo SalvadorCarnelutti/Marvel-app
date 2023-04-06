@@ -9,11 +9,9 @@
 
 import UIKit
 
-protocol EventsViewToPresenterProtocol: UIViewController {
-    var itemsCount: Int { get }
-    func loadEvents(onSuccess: @escaping () -> ())
-    func loadComicsAt(row: Int)
-    func itemAt(row: Int) -> Item
+protocol EventsViewToPresenterProtocol: UIViewController, ItemTableViewProtocol {
+    func didSelectComicAt(row: Int)
+    func viewLoaded()
 }
 
 final class EventsPresenter: TabViewController {
@@ -31,6 +29,16 @@ final class EventsPresenter: TabViewController {
         super.loadView()
         view = viewEvents
     }
+    
+    private func loadEvents() {
+        interactor.loadEvents { [weak self] events in
+            let dateSortedEvents = events.filter { $0.start != nil }.map { $0.getItem }.sorted { $0.startDate! > $1.startDate! }
+            let datelessEvents = events.filter { $0.start == nil }.map { $0.getItem }
+            let combinedEvents = dateSortedEvents + datelessEvents
+            self?.eventItems = combinedEvents
+            self?.viewEvents.reloadTableViewData()
+        }
+    }
 }
 
 // MARK: - ViewToPresenterProtocol
@@ -39,17 +47,7 @@ extension EventsPresenter: EventsViewToPresenterProtocol {
         eventItems.count
     }
     
-    func loadEvents(onSuccess: @escaping () -> ()) {
-        interactor.loadEvents { [weak self] events in
-            let dateSortedEvents = events.filter { $0.start != nil }.map { $0.getItem }.sorted { $0.startDate! > $1.startDate! }
-            let datelessEvents = events.filter { $0.start == nil }.map { $0.getItem }
-            let combinedEvents = dateSortedEvents + datelessEvents
-            self?.eventItems = combinedEvents
-            onSuccess()
-        }
-    }
-    
-    func loadComicsAt(row: Int) {
+    func didSelectComicAt(row: Int) {
         interactor.loadComicsFor(eventId: eventItems[row].id) { [weak self] comicItems in
             guard let self = self else { return }
             self.router.presentComics(with: EventComics(eventItem: self.itemAt(row: row), comicItems: comicItems))
@@ -58,6 +56,10 @@ extension EventsPresenter: EventsViewToPresenterProtocol {
     
     func itemAt(row: Int) -> Item {
         eventItems[row]
+    }
+    
+    func viewLoaded() {
+        loadEvents()
     }
 }
 

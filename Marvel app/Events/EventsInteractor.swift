@@ -8,11 +8,6 @@
 //
 import Foundation
 
-protocol ItemTableViewProtocol: AnyObject {
-    var itemsCount: Int { get }
-    func itemAt(row: Int) -> Item
-}
-
 protocol EventsPresenterToInteractorProtocol: AnyObject {
     var presenter: BaseViewProtocol? { get set }
     func loadEvents(onSuccess: @escaping ([Event]) -> ())

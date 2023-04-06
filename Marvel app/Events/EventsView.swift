@@ -12,6 +12,7 @@ import Alamofire
 protocol EventsPresenterToViewProtocol: UIView {
     var presenter: EventsViewToPresenterProtocol? { get set }
     func loadView()
+    func reloadTableViewData()
 }
 
 final class EventsView: UIView {
@@ -45,9 +46,13 @@ final class EventsView: UIView {
 extension EventsView: EventsPresenterToViewProtocol {
     func loadView() {
         backgroundColor = .secondarySystemBackground
-        presenter?.loadEvents(onSuccess: tableView.reloadData)
         setupConstraints()
-    }        
+        presenter?.viewLoaded()
+    }
+    
+    func reloadTableViewData() {
+        tableView.reloadData()
+    }
 }
 
 extension EventsView: UITableViewDataSource, UITableViewDelegate {
@@ -67,6 +72,6 @@ extension EventsView: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        presenter?.loadComicsAt(row: indexPath.row)
+        presenter?.didSelectComicAt(row: indexPath.row)
     }
 }

@@ -11,6 +11,7 @@ import UIKit
 protocol CharactersPresenterToViewProtocol: UIView {
     var presenter: CharactersViewToPresenterProtocol? { get set }
     func loadView()
+    func insertRows(at newIndexPaths: [IndexPath])
 }
 
 final class CharactersView: UIView {
@@ -50,13 +51,12 @@ final class CharactersView: UIView {
 extension CharactersView: CharactersPresenterToViewProtocol {
     func loadView() {
         backgroundColor = .secondarySystemBackground
-        // TODO: Make a viewIsReady() and then presenter actually does the logic
         setupConstraints()
-        // We must get some first items because prefetching depends on user being able to scroll with the tableView
-        presenter?.loadCharacters { [weak self] newIndexPaths in
-            // We are inserting new rows, not reloading them
-            self?.tableView.insertRows(at: newIndexPaths, with: .automatic)
-        }
+        presenter?.viewLoaded()
+    }
+    
+    func insertRows(at newIndexPaths: [IndexPath]) {
+        tableView.insertRows(at: newIndexPaths, with: .automatic)
     }
 }
 
@@ -77,17 +77,14 @@ extension CharactersView: UITableViewDataSource, UITableViewDelegate, UITableVie
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        presenter?.loadComicsAt(row: indexPath.row)
+        presenter?.didSelectComicsAt(row: indexPath.row)
     }
     
     func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
         guard let presenter = presenter else { return }
         
         if indexPaths.contains(where: isLoadingCell) {
-            presenter.loadCharacters { newIndexPaths in
-                // We are inserting new rows, not reloading them
-                tableView.insertRows(at: newIndexPaths, with: .automatic)
-            }
+            presenter.isPrefetching()
         }
     }
 }

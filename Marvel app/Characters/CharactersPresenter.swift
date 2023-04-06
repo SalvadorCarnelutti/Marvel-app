@@ -10,8 +10,9 @@
 import UIKit
 
 protocol CharactersViewToPresenterProtocol: UIViewController, ItemTableViewProtocol {
-    func loadCharacters(onSuccess: @escaping ([IndexPath]) -> ())
-    func loadComicsAt(row: Int)
+    func didSelectComicsAt(row: Int)
+    func viewLoaded()
+    func isPrefetching()
 }
 
 final class CharactersPresenter: TabViewController {
@@ -36,6 +37,17 @@ final class CharactersPresenter: TabViewController {
         let endIndex = startIndex + newItemsCount
         return (startIndex..<endIndex).map { IndexPath(row: $0, section: 0) }
     }
+    
+    private func loadCharacters() {
+        interactor.loadCharacters { [weak self] characters in
+            guard let self = self else { return }
+            
+            let newIndexPaths = self.newIndexPaths(newItemsCount: characters.count)
+            self.characterItems += characters.map { $0.getItem }
+            // We are inserting new rows, not reloading them
+            self.viewCharacters.insertRows(at: newIndexPaths)
+        }
+    }
 }
 
 // MARK: - ViewToPresenterProtocol
@@ -44,17 +56,7 @@ extension CharactersPresenter: CharactersViewToPresenterProtocol {
         characterItems.count
     }
     
-    func loadCharacters(onSuccess: @escaping ([IndexPath]) -> ()) {
-        interactor.loadCharacters { [weak self] characters in
-            guard let self = self else { return }
-            
-            let newIndexPaths = self.newIndexPaths(newItemsCount: characters.count)
-            self.characterItems += characters.map { $0.getItem }
-            onSuccess(newIndexPaths)
-        }
-    }
-    
-    func loadComicsAt(row: Int) {
+    func didSelectComicsAt(row: Int) {
         interactor.loadComicsFor(characterId: characterItems[row].id) { [weak self] comicItems in
             guard let self = self else { return }
             self.router.pushComics(with: CharacterComics(characterItem: self.itemAt(row: row), comicItems: comicItems))
@@ -63,6 +65,14 @@ extension CharactersPresenter: CharactersViewToPresenterProtocol {
     
     func itemAt(row: Int) -> Item {
         characterItems[row]
+    }
+    
+    func viewLoaded() {
+        loadCharacters()
+    }
+    
+    func isPrefetching() {
+        loadCharacters()
     }
 }
 

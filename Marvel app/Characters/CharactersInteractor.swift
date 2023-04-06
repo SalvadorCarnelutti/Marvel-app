@@ -16,7 +16,6 @@ protocol CharactersPresenterToInteractorProtocol: AnyObject {
 
 // MARK: - PresenterToInteractorProtocol
 final class CharactersInteractor: CharactersPresenterToInteractorProtocol {
-    // TODO: Do actual protocol interactortopresenter to show and hide loader
     weak var presenter: BaseViewProtocol?
     private let charactersRepository: CharactersRepositoryProtocol
     private let pullRate: Int

@@ -59,6 +59,7 @@
 		B491BFD929DF52130085C386 /* ComicsResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B491BFD829DF52130085C386 /* ComicsResponseDTO.swift */; };
 		B491BFDC29DF57500085C386 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = B491BFDB29DF57500085C386 /* Item.swift */; };
 		B491BFDE29DF57800085C386 /* ComicsTableViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B491BFDD29DF57800085C386 /* ComicsTableViewProtocol.swift */; };
+		B491BFE029DF5FB90085C386 /* ItemTableViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B491BFDF29DF5FB90085C386 /* ItemTableViewProtocol.swift */; };
 		B4BFFF9029DCFCA300882EAF /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BFFF8F29DCFCA300882EAF /* BaseViewController.swift */; };
 		B4BFFF9229DCFCD400882EAF /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BFFF9129DCFCD400882EAF /* ActivityIndicator.swift */; };
 		B4BFFF9429DCFD0D00882EAF /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BFFF9329DCFD0D00882EAF /* UIView.swift */; };
@@ -140,6 +141,7 @@
 		B491BFD829DF52130085C386 /* ComicsResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicsResponseDTO.swift; sourceTree = "<group>"; };
 		B491BFDB29DF57500085C386 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		B491BFDD29DF57800085C386 /* ComicsTableViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicsTableViewProtocol.swift; sourceTree = "<group>"; };
+		B491BFDF29DF5FB90085C386 /* ItemTableViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTableViewProtocol.swift; sourceTree = "<group>"; };
 		B4BFFF8F29DCFCA300882EAF /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		B4BFFF9129DCFCD400882EAF /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		B4BFFF9329DCFD0D00882EAF /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
@@ -363,6 +365,7 @@
 			children = (
 				B491BFDB29DF57500085C386 /* Item.swift */,
 				B491BFDD29DF57800085C386 /* ComicsTableViewProtocol.swift */,
+				B491BFDF29DF5FB90085C386 /* ItemTableViewProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -671,6 +674,7 @@
 				B464EC0A29DC9846007E3804 /* CharactersRepository.swift in Sources */,
 				B464EC0C29DC98D9007E3804 /* CharactersResponseDTO.swift in Sources */,
 				B4BFFF9429DCFD0D00882EAF /* UIView.swift in Sources */,
+				B491BFE029DF5FB90085C386 /* ItemTableViewProtocol.swift in Sources */,
 				B441D51F29DA6F1A007CC76D /* EventComicsPresenter.swift in Sources */,
 				B464EC0729DC9740007E3804 /* HTTPManager.swift in Sources */,
 				B441D53F29DB9A3C007CC76D /* CharacterComicsConfigurator.swift in Sources */,
