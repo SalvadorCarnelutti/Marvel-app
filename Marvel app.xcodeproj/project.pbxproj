@@ -208,7 +208,6 @@
 		B441D50229D8DB1F007CC76D /* Events */ = {
 			isa = PBXGroup;
 			children = (
-				B4BFFF9629DDBFFD00882EAF /* Comics */,
 				B441D51A29DA6F0C007CC76D /* EventComics */,
 				B441D50329D8DB31007CC76D /* EventsPresenter.swift */,
 				B441D50429D8DB31007CC76D /* EventsInteractor.swift */,
@@ -381,13 +380,6 @@
 				B441D52729DB1AD0007CC76D /* String.swift */,
 			);
 			path = Extensions;
-			sourceTree = "<group>";
-		};
-		B4BFFF9629DDBFFD00882EAF /* Comics */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Comics;
 			sourceTree = "<group>";
 		};
 		CC136C169B1C9F57CBA1FFFB /* Pods */ = {
