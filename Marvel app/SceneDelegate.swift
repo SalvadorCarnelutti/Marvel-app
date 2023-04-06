@@ -11,7 +11,7 @@ import FirebaseEmailAuthUI
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     // TODO: check appCordinator
-    var appCordinator: AppCoordinator?
+    var appCoordinator: AppCoordinator?
 
     var window: UIWindow?
 
@@ -20,13 +20,19 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let windowScene = (scene as? UIWindowScene) else { return }
-
-        let window = UIWindow(windowScene: windowScene)
+        
+        let viewController: UIViewController
+        if Auth.auth().currentUser != nil {
+          viewController = TabBarViewController()
+        } else {
+          viewController = AppDelegate.authViewController
+        }
+        
         AppCoordinatorConfigurator.injectDependencies(appCoordinator: AppCoordinator(),
                                                       sceneDelegate: self)
-        let authViewController = AppDelegate.authViewController
-        AppDelegate.authUI.delegate = appCordinator
-        window.rootViewController = authViewController
+
+        let window = UIWindow(windowScene: windowScene)
+        window.rootViewController = viewController
         self.window = window
         window.makeKeyAndVisible()
     }
@@ -63,7 +69,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 class AppCoordinator: NSObject, FUIAuthDelegate {
     weak var sceneDelegate: SceneDelegate?
     
-    // TODO: Check autologin
     func authUI(_ authUI: FUIAuth, didSignInWith user: User?, error: Error?) {
         guard let error = error else {
             sceneDelegate?.window?.rootViewController = TabBarViewController()
@@ -75,7 +80,8 @@ class AppCoordinator: NSObject, FUIAuthDelegate {
 class AppCoordinatorConfigurator {
     static func injectDependencies(appCoordinator: AppCoordinator,
                                    sceneDelegate: SceneDelegate) {
-        sceneDelegate.appCordinator = appCoordinator
+        sceneDelegate.appCoordinator = appCoordinator
         appCoordinator.sceneDelegate = sceneDelegate
+        AppDelegate.configureAuthUIDelegate(delegate: appCoordinator)
     }
 }

@@ -51,4 +51,8 @@ extension AppDelegate: FUIAuthDelegate {
     static var authViewController: UINavigationController {
         authUI.authViewController()
     }
+    
+    static func configureAuthUIDelegate(delegate: FUIAuthDelegate) {
+        authUI.delegate = delegate
+    }
 }
