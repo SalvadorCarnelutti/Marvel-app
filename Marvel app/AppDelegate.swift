@@ -47,4 +47,8 @@ extension AppDelegate: FUIAuthDelegate {
     static var authUI: FUIAuth {
         singleton.authUI
     }
+    
+    static var authViewController: UINavigationController {
+        authUI.authViewController()
+    }
 }

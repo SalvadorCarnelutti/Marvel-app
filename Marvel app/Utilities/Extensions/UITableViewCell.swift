@@ -7,6 +7,7 @@
 
 import UIKit
 
+// TODO: Move to somewhere else
 protocol Item {
     var imageURL: URL { get }
     var heading: String { get }

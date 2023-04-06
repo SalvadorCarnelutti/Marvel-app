@@ -8,6 +8,8 @@
 import UIKit
 
 class TabViewController: BaseViewController {
+    let sessionManager = SessionManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "Marvel Challenge"
@@ -19,10 +21,20 @@ class TabViewController: BaseViewController {
     
     @objc private func logoutTapped() {
         do {
-            try AppDelegate.singleton.authUI.signOut()
-            view.window?.rootViewController = AppDelegate.singleton.authUI.authViewController()
+            try sessionManager.logout()
+            view.window?.rootViewController = AppDelegate.authViewController
         } catch {
             presentOKAlert(title: "Logout error", message: "Unexpected logout error")
         }
+    }
+}
+
+class SessionManager {
+    static let shared = SessionManager()
+    
+    init() {}
+    
+    func logout() throws {
+        try AppDelegate.authUI.signOut()
     }
 }

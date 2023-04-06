@@ -15,8 +15,17 @@ protocol EventComicsViewToPresenterProtocol: UIViewController, ComicsTableViewPr
 }
 
 final class EventComicsPresenter: BaseViewController {
+    private let eventComics: EventComics
     var viewEventComics: EventComicsPresenterToViewProtocol!
-    var interactor: EventComicsPresenterToInteractorProtocol!
+    
+    init(eventComics: EventComics) {
+        self.eventComics = eventComics
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,18 +41,23 @@ final class EventComicsPresenter: BaseViewController {
 // MARK: - ViewToPresenterProtocol
 extension EventComicsPresenter: EventComicsViewToPresenterProtocol {
     var eventItem: Item {
-        interactor.eventItem
+        eventComics.eventItem
     }
     
     var comicsCount: Int {
-        interactor.comicsCount
+        eventComics.comicItems.count
     }
     
     var isComicsEmpty: Bool {
-        interactor.isComicsEmpty
+        eventComics.comicItems.isEmpty
     }
     
     func comicAt(row: Int) -> String {
-        interactor.comicAt(row: row)
+        eventComics.comicItems[row]
     }
+}
+
+struct EventComics {
+    let eventItem : Item
+    let comicItems: [String]
 }

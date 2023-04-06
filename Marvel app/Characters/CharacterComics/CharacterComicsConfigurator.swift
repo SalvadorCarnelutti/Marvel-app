@@ -9,12 +9,18 @@
 import Foundation
 
 final class CharacterComicsConfigurator {
-    static func injectDependencies(view: CharacterComicsPresenterToViewProtocol,
-                                   interactor: CharacterComicsPresenterToInteractorProtocol,
-                                   presenter: CharacterComicsPresenter) {
-        presenter.interactor = interactor
-
+    private static func injectDependencies(view: CharacterComicsPresenterToViewProtocol,
+                                           presenter: CharacterComicsPresenter) {
         view.presenter = presenter
         presenter.viewCharacterComics = view
+    }
+    
+    static func resolve(characterComics: CharacterComics) -> CharacterComicsPresenter {
+        let characterComicsPresenter = CharacterComicsPresenter(characterComics: characterComics)
+        let characterComicsView = CharacterComicsView()
+        Self.injectDependencies(view: characterComicsView,
+                                presenter: characterComicsPresenter)
+        
+        return characterComicsPresenter
     }
 }

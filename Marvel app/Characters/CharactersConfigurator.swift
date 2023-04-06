@@ -22,4 +22,6 @@ final class CharactersConfigurator {
         router.viewController = presenter
         presenter.router = router
     }
+    
+    // TODO: Resolve viewControler y entregar el presenter
 }

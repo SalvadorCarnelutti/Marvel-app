@@ -17,13 +17,7 @@ class EventsRouter: EventsPresenterToRouterProtocol {
     weak var viewController: UIViewController?
     
     func presentComics(with eventComics: EventComics) {
-        let eventComicsPresenter = EventComicsPresenter()
-        let eventComicsView = EventComicsView()
-        let eventComicsInteractor = EventComicsInteractor(eventComics: eventComics)
-        EventComicsConfigurator.injectDependencies(view: eventComicsView,
-                                                   interactor: eventComicsInteractor,
-                                                   presenter: eventComicsPresenter)
-        
+        let eventComicsPresenter = EventComicsConfigurator.resolve(eventComics: eventComics)
         eventComicsPresenter.modalPresentationStyle = .popover
         viewController?.navigationController?.present(eventComicsPresenter, animated: true)
     }

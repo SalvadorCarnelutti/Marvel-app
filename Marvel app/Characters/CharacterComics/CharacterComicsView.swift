@@ -38,6 +38,7 @@ extension CharacterComicsView: CharacterComicsPresenterToViewProtocol {
         
         backgroundColor = .white
         characterHighlight.configure(with: presenter.characterItem)
+        // TODO: View should be dumb
         if presenter.isComicsEmpty {
             comicsDisplayView.configureAsEmpty(highlightView: characterHighlight, message: "No available comics to discuss")
         } else {

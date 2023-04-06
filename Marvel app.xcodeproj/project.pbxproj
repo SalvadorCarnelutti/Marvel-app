@@ -27,7 +27,6 @@
 		B441D51729D9EB0C007CC76D /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B441D51629D9EB0C007CC76D /* UITableView.swift */; };
 		B441D51929D9F671007CC76D /* EventHighlight.swift in Sources */ = {isa = PBXBuildFile; fileRef = B441D51829D9F671007CC76D /* EventHighlight.swift */; };
 		B441D51F29DA6F1A007CC76D /* EventComicsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B441D51B29DA6F1A007CC76D /* EventComicsPresenter.swift */; };
-		B441D52029DA6F1A007CC76D /* EventComicsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B441D51C29DA6F1A007CC76D /* EventComicsInteractor.swift */; };
 		B441D52129DA6F1A007CC76D /* EventComicsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B441D51D29DA6F1A007CC76D /* EventComicsView.swift */; };
 		B441D52229DA6F1A007CC76D /* EventComicsConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B441D51E29DA6F1A007CC76D /* EventComicsConfigurator.swift */; };
 		B441D52629DA7B2E007CC76D /* EventsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B441D52529DA7B2E007CC76D /* EventsRouter.swift */; };
@@ -39,7 +38,6 @@
 		B441D53429DB6F7F007CC76D /* HighlightComicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B441D53329DB6F7F007CC76D /* HighlightComicView.swift */; };
 		B441D53629DB8E4A007CC76D /* CharacterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B441D53529DB8E4A007CC76D /* CharacterTableViewCell.swift */; };
 		B441D53C29DB9A3C007CC76D /* CharacterComicsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B441D53829DB9A3C007CC76D /* CharacterComicsPresenter.swift */; };
-		B441D53D29DB9A3C007CC76D /* CharacterComicsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B441D53929DB9A3C007CC76D /* CharacterComicsInteractor.swift */; };
 		B441D53E29DB9A3C007CC76D /* CharacterComicsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B441D53A29DB9A3C007CC76D /* CharacterComicsView.swift */; };
 		B441D53F29DB9A3C007CC76D /* CharacterComicsConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B441D53B29DB9A3C007CC76D /* CharacterComicsConfigurator.swift */; };
 		B441D54129DB9E59007CC76D /* CharactersRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B441D54029DB9E59007CC76D /* CharactersRouter.swift */; };
@@ -103,7 +101,6 @@
 		B441D51629D9EB0C007CC76D /* UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
 		B441D51829D9F671007CC76D /* EventHighlight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventHighlight.swift; sourceTree = "<group>"; };
 		B441D51B29DA6F1A007CC76D /* EventComicsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventComicsPresenter.swift; sourceTree = "<group>"; };
-		B441D51C29DA6F1A007CC76D /* EventComicsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventComicsInteractor.swift; sourceTree = "<group>"; };
 		B441D51D29DA6F1A007CC76D /* EventComicsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventComicsView.swift; sourceTree = "<group>"; };
 		B441D51E29DA6F1A007CC76D /* EventComicsConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventComicsConfigurator.swift; sourceTree = "<group>"; };
 		B441D52529DA7B2E007CC76D /* EventsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsRouter.swift; sourceTree = "<group>"; };
@@ -115,7 +112,6 @@
 		B441D53329DB6F7F007CC76D /* HighlightComicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlightComicView.swift; sourceTree = "<group>"; };
 		B441D53529DB8E4A007CC76D /* CharacterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterTableViewCell.swift; sourceTree = "<group>"; };
 		B441D53829DB9A3C007CC76D /* CharacterComicsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterComicsPresenter.swift; sourceTree = "<group>"; };
-		B441D53929DB9A3C007CC76D /* CharacterComicsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterComicsInteractor.swift; sourceTree = "<group>"; };
 		B441D53A29DB9A3C007CC76D /* CharacterComicsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterComicsView.swift; sourceTree = "<group>"; };
 		B441D53B29DB9A3C007CC76D /* CharacterComicsConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterComicsConfigurator.swift; sourceTree = "<group>"; };
 		B441D54029DB9E59007CC76D /* CharactersRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersRouter.swift; sourceTree = "<group>"; };
@@ -235,7 +231,6 @@
 			isa = PBXGroup;
 			children = (
 				B441D51B29DA6F1A007CC76D /* EventComicsPresenter.swift */,
-				B441D51C29DA6F1A007CC76D /* EventComicsInteractor.swift */,
 				B441D51D29DA6F1A007CC76D /* EventComicsView.swift */,
 				B441D51E29DA6F1A007CC76D /* EventComicsConfigurator.swift */,
 			);
@@ -246,7 +241,6 @@
 			isa = PBXGroup;
 			children = (
 				B441D53829DB9A3C007CC76D /* CharacterComicsPresenter.swift */,
-				B441D53929DB9A3C007CC76D /* CharacterComicsInteractor.swift */,
 				B441D53A29DB9A3C007CC76D /* CharacterComicsView.swift */,
 				B441D53B29DB9A3C007CC76D /* CharacterComicsConfigurator.swift */,
 			);
@@ -635,7 +629,6 @@
 				B4BFFF9229DCFCD400882EAF /* ActivityIndicator.swift in Sources */,
 				B4577CEA29D79D9F00020AF5 /* AppDelegate.swift in Sources */,
 				B441D52229DA6F1A007CC76D /* EventComicsConfigurator.swift in Sources */,
-				B441D53D29DB9A3C007CC76D /* CharacterComicsInteractor.swift in Sources */,
 				B441D53429DB6F7F007CC76D /* HighlightComicView.swift in Sources */,
 				B464EC0F29DCAFF2007E3804 /* EventsRepository.swift in Sources */,
 				B441D53029DB683B007CC76D /* ComicsTableView.swift in Sources */,
@@ -649,7 +642,6 @@
 				B464EC0529DC972C007E3804 /* RestClient.swift in Sources */,
 				B441D53E29DB9A3C007CC76D /* CharacterComicsView.swift in Sources */,
 				B441D53229DB6E4B007CC76D /* ComicsDisplayView.swift in Sources */,
-				B441D52029DA6F1A007CC76D /* EventComicsInteractor.swift in Sources */,
 				B441D51729D9EB0C007CC76D /* UITableView.swift in Sources */,
 				B441D53629DB8E4A007CC76D /* CharacterTableViewCell.swift in Sources */,
 				B441D50729D8DB31007CC76D /* EventsPresenter.swift in Sources */,

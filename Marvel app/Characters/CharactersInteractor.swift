@@ -16,9 +16,11 @@ protocol CharactersPresenterToInteractorProtocol: AnyObject, ItemTableViewProtoc
 
 // MARK: - PresenterToInteractorProtocol
 final class CharactersInteractor: CharactersPresenterToInteractorProtocol {
+    // TODO: Do actual protocl interactortopresenter to show and hide loader
     weak var viewController: BaseViewProtocol?
     private let charactersRepository: CharactersRepositoryProtocol
     private let pullRate: Int
+    // TODO: characterItems should be on presenter
     private var characterItems = [CharacterCellItem]()
     
     // Keep track if there are more pages to pull from and if a fetch is already in process
@@ -59,9 +61,7 @@ final class CharactersInteractor: CharactersPresenterToInteractorProtocol {
                 // Check if we have reached the end of pullable items
                 self.isThereMore = self.itemsCount < charactersResponse.data.total
                 
-                DispatchQueue.main.async {
-                    onSuccess(newIndexPaths)
-                }
+                onSuccess(newIndexPaths)
             case .failure:
                 self.viewController?.presentOKAlert(title: "Characters loading error", message: "Unexpected loading error")
             }

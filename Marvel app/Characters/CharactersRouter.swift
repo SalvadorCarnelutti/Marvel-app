@@ -17,14 +17,8 @@ class CharactersRouter: CharactersPresenterToRouterProtocol {
     weak var viewController: UIViewController?
     
     func pushComics(with characterComics: CharacterComics) {
-        let eventComicsPresenter = CharacterComicsPresenter()
-        let eventComicsView = CharacterComicsView()
-        let eventComicsInteractor = CharacterComicsInteractor(characterComics: characterComics)
-        CharacterComicsConfigurator.injectDependencies(view: eventComicsView,
-                                                       interactor: eventComicsInteractor,
-                                                       presenter: eventComicsPresenter)
-        
-        eventComicsPresenter.modalPresentationStyle = .popover
-        viewController?.navigationController?.pushViewController(eventComicsPresenter, animated: true)
+        let characterComicsPresenter = CharacterComicsConfigurator.resolve(characterComics: characterComics)
+        characterComicsPresenter.modalPresentationStyle = .popover
+        viewController?.navigationController?.pushViewController(characterComicsPresenter, animated: true)
     }
 }

@@ -10,7 +10,8 @@ import FirebaseCore
 import FirebaseEmailAuthUI
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
-    var appCordinator: AppCoordinator!
+    // TODO: check appCordinator
+    var appCordinator: AppCoordinator?
 
     var window: UIWindow?
 
@@ -23,7 +24,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let window = UIWindow(windowScene: windowScene)
         AppCoordinatorConfigurator.injectDependencies(appCoordinator: AppCoordinator(),
                                                       sceneDelegate: self)
-        let authViewController = AppDelegate.authUI.authViewController()
+        let authViewController = AppDelegate.authViewController
         AppDelegate.authUI.delegate = appCordinator
         window.rootViewController = authViewController
         self.window = window
@@ -62,6 +63,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 class AppCoordinator: NSObject, FUIAuthDelegate {
     weak var sceneDelegate: SceneDelegate?
     
+    // TODO: Check autologin
     func authUI(_ authUI: FUIAuth, didSignInWith user: User?, error: Error?) {
         guard let error = error else {
             sceneDelegate?.window?.rootViewController = TabBarViewController()

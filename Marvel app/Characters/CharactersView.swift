@@ -50,6 +50,7 @@ final class CharactersView: UIView {
 extension CharactersView: CharactersPresenterToViewProtocol {
     func loadView() {
         backgroundColor = .secondarySystemBackground
+        // TODO: Make a viewIsReady() and then presenter actually does the logic
         setupConstraints()
         // We must get some first items because prefetching depends on user being able to scroll with the tableView
         presenter?.loadCharacters { [weak self] newIndexPaths in
