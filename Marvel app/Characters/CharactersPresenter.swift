@@ -10,7 +10,7 @@
 import UIKit
 
 protocol CharactersViewToPresenterProtocol: UIViewController, ItemTableViewProtocol {
-    func didSelectComicsAt(row: Int)
+    func didSelectCharacterAt(row: Int)
     func viewLoaded()
     func isPrefetching()
 }
@@ -56,7 +56,7 @@ extension CharactersPresenter: CharactersViewToPresenterProtocol {
         characterItems.count
     }
     
-    func didSelectComicsAt(row: Int) {
+    func didSelectCharacterAt(row: Int) {
         interactor.loadComicsFor(characterId: characterItems[row].id) { [weak self] comicItems in
             guard let self = self else { return }
             self.router.pushComics(with: CharacterComics(characterItem: self.itemAt(row: row), comicItems: comicItems))

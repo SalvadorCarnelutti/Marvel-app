@@ -10,7 +10,7 @@
 import UIKit
 
 protocol EventsViewToPresenterProtocol: UIViewController, ItemTableViewProtocol {
-    func didSelectComicAt(row: Int)
+    func didSelectEventAt(row: Int)
     func viewLoaded()
 }
 
@@ -47,7 +47,7 @@ extension EventsPresenter: EventsViewToPresenterProtocol {
         eventItems.count
     }
     
-    func didSelectComicAt(row: Int) {
+    func didSelectEventAt(row: Int) {
         interactor.loadComicsFor(eventId: eventItems[row].id) { [weak self] comicItems in
             guard let self = self else { return }
             self.router.presentComics(with: EventComics(eventItem: self.itemAt(row: row), comicItems: comicItems))

@@ -1,0 +1,35 @@
+## Table of contents
+* [General info](#general-info)
+* [Technologies](#technologies)
+* [Design pattern chosen](#design-pattern-chosen)
+* [Setup](#setup)
+
+## General info
+
+This project is a Marvel catalog browser with the capabilities to:
+- Log in into the app, and have auto log-in as well
+- Browse over a series of characters
+- Get additional info on those characters and on which comics they appeared
+- Browse over a series of events
+- Get additional info on those events and which comics surround them
+	
+## Technologies
+Project is created with:
+* Firebase
+* VIPER design pattern
+* CocoaPods dependency manager
+* Alamofire framework
+* Codeable protocol
+* SDWebImage library
+* The Marvel Comics API own free public REST API (https://developer.marvel.com/docs#!/)
+
+## Design pattern chosen
+VIPER was chosen as an optimal way to modularize and encapsulate properly responsabilities for each screen, this allows for better decoupling and this as well makes it easier to debug and test features.
+	
+## Setup
+To run this project, install the required frameworks using CocoaPods:
+
+```
+$ cd ../Marvel app
+$ pod install
+```

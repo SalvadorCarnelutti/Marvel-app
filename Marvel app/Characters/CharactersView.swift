@@ -77,7 +77,7 @@ extension CharactersView: UITableViewDataSource, UITableViewDelegate, UITableVie
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        presenter?.didSelectComicsAt(row: indexPath.row)
+        presenter?.didSelectCharacterAt(row: indexPath.row)
     }
     
     func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {

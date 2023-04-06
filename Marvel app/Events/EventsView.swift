@@ -72,6 +72,6 @@ extension EventsView: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        presenter?.didSelectComicAt(row: indexPath.row)
+        presenter?.didSelectEventAt(row: indexPath.row)
     }
 }
