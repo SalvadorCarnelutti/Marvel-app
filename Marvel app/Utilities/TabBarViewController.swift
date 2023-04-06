@@ -16,14 +16,14 @@ class TabBarViewController: UITabBarController {
     
     func setupTabs() {
         viewControllers = [
-            Self.getNavigationController(for: Self.firstTab, title: "Characters", image: .characters),
-            Self.getNavigationController(for: Self.secondTab, title: "Events", image: .events)
+            getNavigationController(for: Self.firstTab, title: "Characters", image: .characters),
+            getNavigationController(for: Self.secondTab, title: "Events", image: .events)
         ]
     }
 }
 
 extension TabBarViewController {
-    static func getNavigationController(for rootViewController: UIViewController, title: String, image: UIImage) -> UIViewController {
+    func getNavigationController(for rootViewController: UIViewController, title: String, image: UIImage) -> UIViewController {
         let navigationController = UINavigationController(rootViewController: rootViewController)
         navigationController.tabBarItem.title = title
         navigationController.tabBarItem.image = image
@@ -38,7 +38,8 @@ extension TabBarViewController {
         
         CharactersConfigurator.injectDependencies(view: charactersView,
                                                   interactor: charactersInteractor,
-                                                  presenter: charactersPresenter, router: charactersRouter)
+                                                  presenter: charactersPresenter,
+                                                  router: charactersRouter)
         return charactersPresenter
     }
     

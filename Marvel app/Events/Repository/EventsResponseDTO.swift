@@ -4,6 +4,7 @@
 //
 //  Created by Salvador on 4/4/23.
 //
+
 import Foundation
 
 struct EventsResponse: Codable {

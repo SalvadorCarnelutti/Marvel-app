@@ -42,7 +42,6 @@ final class CharacterComicsInteractor: CharacterComicsPresenterToInteractorProto
     }
 }
 
-// MARK: - Entity
 struct CharacterComics {
     let characterItem : Item
     let comicItems: [String]

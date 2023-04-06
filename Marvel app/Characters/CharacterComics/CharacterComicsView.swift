@@ -41,7 +41,7 @@ extension CharacterComicsView: CharacterComicsPresenterToViewProtocol {
         if presenter.isComicsEmpty {
             comicsDisplayView.configureAsEmpty(highlightView: characterHighlight, message: "No available comics to discuss")
         } else {
-            comicsDisplayView.configureTable(comicDisplay: ComicDisplayStruct(dataSource: self, delegate: self))
+            comicsDisplayView.configureTableWith(dataSource: self, delegate: self)
         }
         setupConstraints()
     }

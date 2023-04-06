@@ -43,7 +43,6 @@ final class EventComicsInteractor: EventComicsPresenterToInteractorProtocol {
     }
 }
 
-// MARK: - Entity
 struct EventComics {
     let eventItem : Item
     let comicItems: [String]

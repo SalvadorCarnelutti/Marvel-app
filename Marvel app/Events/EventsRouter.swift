@@ -15,7 +15,6 @@ protocol EventsPresenterToRouterProtocol: AnyObject {
 class EventsRouter: EventsPresenterToRouterProtocol {
     // MARK: - Properties
     weak var viewController: UIViewController?
-
     
     func presentComics(with eventComics: EventComics) {
         let eventComicsPresenter = EventComicsPresenter()

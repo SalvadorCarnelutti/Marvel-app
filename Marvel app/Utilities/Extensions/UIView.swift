@@ -39,16 +39,3 @@ extension UIView {
         ])
     }
 }
-
-extension UIView {
-    var allSubviews: [UIView] {
-        var allHierarchySubviews = subviews
-        subviews.forEach({ allHierarchySubviews += $0.allSubviews })
-        
-        return allHierarchySubviews
-    }
-    
-    func addSubviews(_ views: UIView...) {
-        views.forEach({ addSubview($0) })
-    }
-}

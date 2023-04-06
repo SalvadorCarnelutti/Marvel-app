@@ -223,11 +223,10 @@
 			children = (
 				B4BFFF9529DCFD1E00882EAF /* Extensions */,
 				B4577CED29D79D9F00020AF5 /* TabBarViewController.swift */,
-				B441D52929DB20C4007CC76D /* CryptoHelper.swift */,
-				B441D50B29D8DB87007CC76D /* TabViewController.swift */,
-				B441D51629D9EB0C007CC76D /* UITableView.swift */,
 				B4BFFF8F29DCFCA300882EAF /* BaseViewController.swift */,
+				B441D50B29D8DB87007CC76D /* TabViewController.swift */,
 				B4BFFF9129DCFCD400882EAF /* ActivityIndicator.swift */,
+				B441D52929DB20C4007CC76D /* CryptoHelper.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -343,6 +342,7 @@
 				B441D50E29D8DC8A007CC76D /* UIImages.swift */,
 				B4BFFF9329DCFD0D00882EAF /* UIView.swift */,
 				B441D51029D90FEF007CC76D /* UITableViewCell.swift */,
+				B441D51629D9EB0C007CC76D /* UITableView.swift */,
 				B441D51429D9D613007CC76D /* Date.swift */,
 				B441D52729DB1AD0007CC76D /* String.swift */,
 			);

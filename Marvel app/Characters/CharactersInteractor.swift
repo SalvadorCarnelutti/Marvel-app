@@ -22,8 +22,8 @@ final class CharactersInteractor: CharactersPresenterToInteractorProtocol {
     private var characterItems = [CharacterCellItem]()
     
     // Keep track if there are more pages to pull from and if a fetch is already in process
-    var isThereMore = true
-    var isFetchInProgress = false
+    private var isThereMore = true
+    private var isFetchInProgress = false
     
     init(charactersRepository: CharactersRepositoryProtocol, pullRate: Int = 15) {
         self.charactersRepository = charactersRepository

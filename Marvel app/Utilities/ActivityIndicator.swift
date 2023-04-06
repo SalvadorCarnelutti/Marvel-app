@@ -55,7 +55,6 @@ class ActivityIndicator: UIView {
     
     init() {
         super.init(frame: .zero)
-        
         setupViews()
         setupConstraints()
     }

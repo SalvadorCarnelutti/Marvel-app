@@ -34,28 +34,13 @@ final class ComicsDisplayView: UIView {
         stackView.addArrangedSubview(spacer)
     }
     
-    func configureTable(comicDisplay: ComicDisplay) {
+    func configureTableWith(dataSource: UITableViewDataSource?, delegate: UITableViewDelegate?) {
         let comicsTableView = ComicsTableView()
-        comicsTableView.configure(with: comicDisplay.dataSource, delegate: comicDisplay.delegate)
+        comicsTableView.configureWith(dataSource: dataSource, delegate: delegate)
         stackView.addArrangedSubview(comicsTableView)
     }
     
     private func setupConstraints() {
-        NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
-            stackView.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor),
-            stackView.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor),
-            stackView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)
-        ])
+        stackView.pinToSuperview()
     }
-}
-
-struct ComicDisplayStruct: ComicDisplay {
-    let dataSource: UITableViewDataSource?
-    let delegate: UITableViewDelegate?
-}
-
-protocol ComicDisplay {
-    var dataSource: UITableViewDataSource? { get }
-    var delegate: UITableViewDelegate? { get }
 }

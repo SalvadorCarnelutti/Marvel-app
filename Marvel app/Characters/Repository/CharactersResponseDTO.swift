@@ -37,7 +37,6 @@ extension Character {
     }
 }
 
-
 struct ComicsResponse: Codable {
     let data: Comics
 }

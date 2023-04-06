@@ -50,7 +50,9 @@ final class EventsInteractor: EventsPresenterToInteractorProtocol {
                 let datelessEvents = eventsArray.filter { $0.start == nil }.map { $0.getItem }
                 let combinedEvents = dateSortedEvents + datelessEvents
                 self.eventItems = combinedEvents
-                onSuccess()
+                DispatchQueue.main.async {
+                    onSuccess()
+                }
             case .failure:
                 self.viewController?.presentOKAlert(title: "Events loading error", message: "Unexpected loading error")
             }

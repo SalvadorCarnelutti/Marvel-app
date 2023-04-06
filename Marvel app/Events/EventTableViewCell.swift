@@ -41,9 +41,3 @@ class EventTableViewCell: UITableViewCell {
         eventHighlight.configure(with: item)
     }
 }
-
-struct EventCell: Item {
-    var imageURL: URL
-    var heading: String
-    var description: String
-}

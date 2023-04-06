@@ -10,9 +10,9 @@ import UIKit
 final class ComicsTableView: UIView {
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
-        tableView.backgroundColor = .systemBackground
         tableView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(tableView)
+        tableView.backgroundColor = .systemBackground
         tableView.register(ComicTableViewCell.self)
         tableView.estimatedRowHeight = UITableView.automaticDimension
         tableView.estimatedSectionHeaderHeight = UITableView.automaticDimension
@@ -30,7 +30,7 @@ final class ComicsTableView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(with dataSource: UITableViewDataSource?, delegate: UITableViewDelegate?) {
+    func configureWith(dataSource: UITableViewDataSource?, delegate: UITableViewDelegate?) {
         tableView.dataSource = dataSource
         tableView.delegate = delegate
     }
