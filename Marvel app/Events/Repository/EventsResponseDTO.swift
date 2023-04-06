@@ -35,12 +35,3 @@ struct Image: Codable {
         case fileExtension = "extension"
     }
 }
-
-extension Event {
-    var getItem: EventCellItem {
-        EventCellItem(id: id,
-                      imageURL: thumbnail.imageURL,
-                      heading: title,
-                      startDate: Date.formatAsDate(start, dateFormat: "yyyy-MM-dd hh:mm:ss"))
-    }
-}

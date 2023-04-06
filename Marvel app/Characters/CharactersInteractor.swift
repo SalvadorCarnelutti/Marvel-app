@@ -8,20 +8,19 @@
 //
 import Foundation
 
-protocol CharactersPresenterToInteractorProtocol: AnyObject, ItemTableViewProtocol {
-    var viewController: BaseViewProtocol? { get set }
-    func loadCharacters(onSuccess: @escaping ([IndexPath]) -> ())
-    func loadComicsAt(row: Int, onSuccess: @escaping (CharacterComics) -> ())
+protocol CharactersPresenterToInteractorProtocol: AnyObject {
+    var presenter: BaseViewProtocol? { get set }
+    func loadCharacters(onSuccess: @escaping ([Character]) -> ())
+    func loadComicsFor(characterId: Int, onSuccess: @escaping ([String]) -> ())
 }
 
 // MARK: - PresenterToInteractorProtocol
 final class CharactersInteractor: CharactersPresenterToInteractorProtocol {
-    // TODO: Do actual protocl interactortopresenter to show and hide loader
-    weak var viewController: BaseViewProtocol?
+    // TODO: Do actual protocol interactortopresenter to show and hide loader
+    weak var presenter: BaseViewProtocol?
     private let charactersRepository: CharactersRepositoryProtocol
     private let pullRate: Int
-    // TODO: characterItems should be on presenter
-    private var characterItems = [CharacterCellItem]()
+    private var charactersCount = 0
     
     // Keep track if there are more pages to pull from and if a fetch is already in process
     private var isThereMore = true
@@ -32,70 +31,46 @@ final class CharactersInteractor: CharactersPresenterToInteractorProtocol {
         self.pullRate = pullRate
     }
     
-    var itemsCount: Int {
-        characterItems.count
-    }
-    
-    func itemAt(row: Int) -> Item {
-        characterItems[row]
-    }
-    
-    func loadCharacters(onSuccess: @escaping ([IndexPath]) -> ()) {
+    func loadCharacters(onSuccess: @escaping ([Character]) -> ()) {
         guard isThereMore, !isFetchInProgress else {
             return
         }
         isFetchInProgress = true
         
-        viewController?.showLoader()
-        charactersRepository.getCharacters(limit: pullRate, offset: itemsCount) { [weak self] result in
+        presenter?.showLoader()
+        charactersRepository.getCharacters(limit: pullRate, offset: charactersCount) { [weak self] result in
             guard let self = self else { return }
-            self.viewController?.hideLoader()
+            self.presenter?.hideLoader()
             self.isFetchInProgress = false
             
             switch result {
             case .success(let charactersResponse):
                 let characters = charactersResponse.data.results
-                let newIndexPaths = self.newIndexPaths(newItemsCount: characters.count)
-                self.characterItems += characters.map { $0.getItem }
+                self.charactersCount += characters.count
                 
                 // Check if we have reached the end of pullable items
-                self.isThereMore = self.itemsCount < charactersResponse.data.total
+                self.isThereMore = self.charactersCount < charactersResponse.data.total
                 
-                onSuccess(newIndexPaths)
+                onSuccess(characters)
             case .failure:
-                self.viewController?.presentOKAlert(title: "Characters loading error", message: "Unexpected loading error")
+                self.presenter?.presentOKAlert(title: "Characters loading error", message: "Unexpected loading error")
             }
         }
     }
     
-    func loadComicsAt(row: Int, onSuccess: @escaping (CharacterComics) -> ()) {
-        viewController?.showLoader()
-        charactersRepository.loadComicsFor(id: characterItems[row].id) { [weak self] result in
+    func loadComicsFor(characterId: Int, onSuccess: @escaping ([String]) -> ()) {
+        presenter?.showLoader()
+        charactersRepository.loadComicsFor(id: characterId) { [weak self] result in
             guard let self = self else { return }
-            self.viewController?.hideLoader()
+            self.presenter?.hideLoader()
             
             switch result {
             case .success(let comicsResponse):
-                let characterItem = self.characterItems[row]
                 let comicItems = comicsResponse.data.results.map { $0.title }
-                onSuccess(CharacterComics(characterItem: characterItem, comicItems: comicItems))
+                onSuccess(comicItems)
             case .failure:
-                self.viewController?.presentOKAlert(title: "Comics loading error", message: "Unexpected loading error")
+                self.presenter?.presentOKAlert(title: "Comics loading error", message: "Unexpected loading error")
             }
         }
     }
-    
-    // This must be run before updating characterItems on each new character batch pull
-    private func newIndexPaths(newItemsCount: Int) -> [IndexPath] {
-        let startIndex = itemsCount
-        let endIndex = startIndex + newItemsCount
-        return (startIndex..<endIndex).map { IndexPath(row: $0, section: 0) }
-    }
-}
-
-struct CharacterCellItem: Item {
-    let id: Int
-    var imageURL: URL
-    let heading: String
-    let description: String
 }

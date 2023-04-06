@@ -56,6 +56,7 @@
 		B464EC0C29DC98D9007E3804 /* CharactersResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B464EC0B29DC98D9007E3804 /* CharactersResponseDTO.swift */; };
 		B464EC0F29DCAFF2007E3804 /* EventsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B464EC0E29DCAFF2007E3804 /* EventsRepository.swift */; };
 		B464EC1129DCB137007E3804 /* EventsResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B464EC1029DCB137007E3804 /* EventsResponseDTO.swift */; };
+		B491BFD929DF52130085C386 /* ComicsResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B491BFD829DF52130085C386 /* ComicsResponseDTO.swift */; };
 		B4BFFF9029DCFCA300882EAF /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BFFF8F29DCFCA300882EAF /* BaseViewController.swift */; };
 		B4BFFF9229DCFCD400882EAF /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BFFF9129DCFCD400882EAF /* ActivityIndicator.swift */; };
 		B4BFFF9429DCFD0D00882EAF /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BFFF9329DCFD0D00882EAF /* UIView.swift */; };
@@ -134,6 +135,7 @@
 		B464EC0B29DC98D9007E3804 /* CharactersResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersResponseDTO.swift; sourceTree = "<group>"; };
 		B464EC0E29DCAFF2007E3804 /* EventsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsRepository.swift; sourceTree = "<group>"; };
 		B464EC1029DCB137007E3804 /* EventsResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsResponseDTO.swift; sourceTree = "<group>"; };
+		B491BFD829DF52130085C386 /* ComicsResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicsResponseDTO.swift; sourceTree = "<group>"; };
 		B4BFFF8F29DCFCA300882EAF /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		B4BFFF9129DCFCD400882EAF /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		B4BFFF9329DCFD0D00882EAF /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
@@ -274,6 +276,7 @@
 			children = (
 				B464EC0329DC971F007E3804 /* Network */,
 				B441D50D29D8DC7B007CC76D /* Utilities */,
+				B491BFD629DF51B10085C386 /* Shared */,
 				B441D50229D8DB1F007CC76D /* Events */,
 				B441D4F929D8D6FE007CC76D /* Characters */,
 				B4577CE929D79D9F00020AF5 /* AppDelegate.swift */,
@@ -330,6 +333,26 @@
 			path = Repository;
 			sourceTree = "<group>";
 		};
+		B491BFD629DF51B10085C386 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				B491BFD729DF51FF0085C386 /* Repository */,
+				B441D52B29DB28FB007CC76D /* ComicTableViewCell.swift */,
+				B441D52F29DB683B007CC76D /* ComicsTableView.swift */,
+				B441D53129DB6E4B007CC76D /* ComicsDisplayView.swift */,
+				B441D53329DB6F7F007CC76D /* HighlightComicView.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		B491BFD729DF51FF0085C386 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				B491BFD829DF52130085C386 /* ComicsResponseDTO.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
 		B4BFFF9529DCFD1E00882EAF /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -346,10 +369,6 @@
 		B4BFFF9629DDBFFD00882EAF /* Comics */ = {
 			isa = PBXGroup;
 			children = (
-				B441D52F29DB683B007CC76D /* ComicsTableView.swift */,
-				B441D53129DB6E4B007CC76D /* ComicsDisplayView.swift */,
-				B441D53329DB6F7F007CC76D /* HighlightComicView.swift */,
-				B441D52B29DB28FB007CC76D /* ComicTableViewCell.swift */,
 			);
 			path = Comics;
 			sourceTree = "<group>";
@@ -620,6 +639,7 @@
 				B4577CEE29D79D9F00020AF5 /* TabBarViewController.swift in Sources */,
 				B441D50F29D8DC8A007CC76D /* UIImages.swift in Sources */,
 				B441D54129DB9E59007CC76D /* CharactersRouter.swift in Sources */,
+				B491BFD929DF52130085C386 /* ComicsResponseDTO.swift in Sources */,
 				B441D52C29DB28FB007CC76D /* ComicTableViewCell.swift in Sources */,
 				B441D51129D90FEF007CC76D /* UITableViewCell.swift in Sources */,
 				B441D52129DA6F1A007CC76D /* EventComicsView.swift in Sources */,

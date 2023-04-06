@@ -13,63 +13,49 @@ protocol ItemTableViewProtocol: AnyObject {
     func itemAt(row: Int) -> Item
 }
 
-protocol EventsPresenterToInteractorProtocol: ItemTableViewProtocol {
-    var viewController: BaseViewProtocol? { get set }
-    func loadEvents(onSuccess: @escaping () -> ())
-    func loadComicsAt(row: Int, onSuccess: @escaping (EventComics) -> ())
+protocol EventsPresenterToInteractorProtocol: AnyObject {
+    var presenter: BaseViewProtocol? { get set }
+    func loadEvents(onSuccess: @escaping ([Event]) -> ())
+    func loadComicsFor(eventId: Int, onSuccess: @escaping ([String]) -> ())
 }
 
 // MARK: - PresenterToInteractorProtocol
 final class EventsInteractor: EventsPresenterToInteractorProtocol {
-    weak var viewController: BaseViewProtocol?
+    weak var presenter: BaseViewProtocol?
     private let eventsRepository: EventsRepositoryProtocol
-    var eventItems = [EventCellItem]()
     
     init(eventsRepository: EventsRepositoryProtocol) {
         self.eventsRepository = eventsRepository
     }
     
-    var itemsCount: Int {
-        eventItems.count
-    }
-    
-    func itemAt(row: Int) -> Item {
-        eventItems[row]
-    }
-    
-    func loadEvents(onSuccess: @escaping () -> ()) {
-        viewController?.showLoader()
+    func loadEvents(onSuccess: @escaping ([Event]) -> ()) {
+        presenter?.showLoader()
         eventsRepository.getEvents { [weak self] result in
             guard let self = self else { return }
-            self.viewController?.hideLoader()
-            
+            self.presenter?.hideLoader()
+
             switch result {
             case .success(let events):
                 let eventsArray = events.data.results
-                let dateSortedEvents = eventsArray.filter { $0.start != nil }.map { $0.getItem }.sorted { $0.startDate! > $1.startDate! }
-                let datelessEvents = eventsArray.filter { $0.start == nil }.map { $0.getItem }
-                let combinedEvents = dateSortedEvents + datelessEvents
-                self.eventItems = combinedEvents
-                onSuccess()
+                onSuccess(eventsArray)
             case .failure:
-                self.viewController?.presentOKAlert(title: "Events loading error", message: "Unexpected loading error")
+                self.presenter?.presentOKAlert(title: "Events loading error", message: "Unexpected loading error")
             }
         }
     }
     
-    func loadComicsAt(row: Int, onSuccess: @escaping (EventComics) -> ()) {
-        viewController?.showLoader()
-        eventsRepository.loadComicsFor(id: eventItems[row].id) { [weak self] result in
+    func loadComicsFor(eventId: Int, onSuccess: @escaping ([String]) -> ()) {
+        presenter?.showLoader()
+        eventsRepository.loadComicsFor(id: eventId) { [weak self] result in
             guard let self = self else { return }
-            self.viewController?.hideLoader()
+            self.presenter?.hideLoader()
             
             switch result {
             case .success(let comics):
-                let eventItem = self.eventItems[row]
                 let comicItems = comics.data.results.map { $0.title }
-                onSuccess(EventComics(eventItem: eventItem, comicItems: comicItems))
+                onSuccess(comicItems)
             case .failure:
-                self.viewController?.presentOKAlert(title: "Comics loading error", message: "Unexpected loading error")
+                self.presenter?.presentOKAlert(title: "Comics loading error", message: "Unexpected loading error")
             }
         }
     }

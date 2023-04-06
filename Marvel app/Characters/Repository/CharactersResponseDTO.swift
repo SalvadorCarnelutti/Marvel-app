@@ -22,29 +22,3 @@ struct Character: Codable {
     let name: String
     let description: String?
 }
-
-extension Character {
-    var characterDescription: String {
-        guard let description = description, !description.isEmpty else {
-            return "Bio unavailable"
-        }
-        
-        return description
-    }
-    
-    var getItem: CharacterCellItem {
-        CharacterCellItem(id: id, imageURL: thumbnail.imageURL, heading: name, description: characterDescription)
-    }
-}
-
-struct ComicsResponse: Codable {
-    let data: Comics
-}
-
-struct Comics: Codable {
-    let results: [Comic]
-}
-
-struct Comic: Codable {
-    let title: String
-}

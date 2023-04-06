@@ -10,7 +10,6 @@ import FirebaseCore
 import FirebaseEmailAuthUI
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
-    // TODO: check appCordinator
     var appCoordinator: AppCoordinator?
 
     var window: UIWindow?

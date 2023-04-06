@@ -9,17 +9,32 @@
 import Foundation
 
 final class EventsConfigurator {
-    static func injectDependencies(view: EventsPresenterToViewProtocol,
-                                   interactor: EventsPresenterToInteractorProtocol,
-                                   presenter: EventsPresenter,
-                                   router: EventsPresenterToRouterProtocol) {
+    private static func injectDependencies(view: EventsPresenterToViewProtocol,
+                                           interactor: EventsPresenterToInteractorProtocol,
+                                           presenter: EventsPresenter,
+                                           router: EventsPresenterToRouterProtocol) {
+        interactor.presenter = presenter
         presenter.interactor = interactor
-        interactor.viewController = presenter
-
+        
         view.presenter = presenter
         presenter.viewEvents = view
         
         router.viewController = presenter
         presenter.router = router
+    }
+    
+    static func resolve() -> EventsPresenter {
+        let eventsPresenter = EventsPresenter()
+        let eventsView = EventsView()
+        let eventsInteractor = EventsInteractor(eventsRepository: EventsRepository())
+        let eventRouter = EventsRouter()
+        
+        Self.injectDependencies(view: eventsView,
+                                interactor: eventsInteractor,
+                                presenter: eventsPresenter,
+                                router: eventRouter)
+        
+        return eventsPresenter
+
     }
 }
