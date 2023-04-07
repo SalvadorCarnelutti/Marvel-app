@@ -29,6 +29,7 @@ final class CharactersView: UIView {
         tableView.estimatedRowHeight = UITableView.automaticDimension
         tableView.separatorStyle = .none
         tableView.backgroundColor = .clear
+        tableView.clipsToBounds = false
         return tableView
     }()
     

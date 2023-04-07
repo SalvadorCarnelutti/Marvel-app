@@ -64,6 +64,7 @@
 		B491BFFD29E061640085C386 /* RobotoCondensed-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B491BFFA29E061630085C386 /* RobotoCondensed-Bold.ttf */; };
 		B491BFFE29E061640085C386 /* RobotoCondensed-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B491BFFB29E061640085C386 /* RobotoCondensed-Regular.ttf */; };
 		B491C00029E0657E0085C386 /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = B491BFFF29E0657E0085C386 /* UIFont.swift */; };
+		B491C00229E079D60085C386 /* SlotContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B491C00129E079D60085C386 /* SlotContainer.swift */; };
 		B4BFFF9029DCFCA300882EAF /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BFFF8F29DCFCA300882EAF /* BaseViewController.swift */; };
 		B4BFFF9229DCFCD400882EAF /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BFFF9129DCFCD400882EAF /* ActivityIndicator.swift */; };
 		B4BFFF9429DCFD0D00882EAF /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BFFF9329DCFD0D00882EAF /* UIView.swift */; };
@@ -150,6 +151,7 @@
 		B491BFFA29E061630085C386 /* RobotoCondensed-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-Bold.ttf"; sourceTree = "<group>"; };
 		B491BFFB29E061640085C386 /* RobotoCondensed-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-Regular.ttf"; sourceTree = "<group>"; };
 		B491BFFF29E0657E0085C386 /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
+		B491C00129E079D60085C386 /* SlotContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlotContainer.swift; sourceTree = "<group>"; };
 		B4BFFF8F29DCFCA300882EAF /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		B4BFFF9129DCFCD400882EAF /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		B4BFFF9329DCFD0D00882EAF /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
@@ -232,11 +234,9 @@
 		B441D50D29D8DC7B007CC76D /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				B491C00429E079F70085C386 /* Views */,
+				B491C00329E079E00085C386 /* ViewControllers */,
 				B4BFFF9529DCFD1E00882EAF /* Extensions */,
-				B4577CED29D79D9F00020AF5 /* TabBarViewController.swift */,
-				B4BFFF8F29DCFCA300882EAF /* BaseViewController.swift */,
-				B441D50B29D8DB87007CC76D /* TabViewController.swift */,
-				B4BFFF9129DCFCD400882EAF /* ActivityIndicator.swift */,
 				B441D52929DB20C4007CC76D /* CryptoHelper.swift */,
 			);
 			path = Utilities;
@@ -394,6 +394,25 @@
 				B491BFFB29E061640085C386 /* RobotoCondensed-Regular.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		B491C00329E079E00085C386 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				B4577CED29D79D9F00020AF5 /* TabBarViewController.swift */,
+				B4BFFF8F29DCFCA300882EAF /* BaseViewController.swift */,
+				B441D50B29D8DB87007CC76D /* TabViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		B491C00429E079F70085C386 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B491C00129E079D60085C386 /* SlotContainer.swift */,
+				B4BFFF9129DCFCD400882EAF /* ActivityIndicator.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		B4BFFF9529DCFD1E00882EAF /* Extensions */ = {
@@ -682,6 +701,7 @@
 				B441D54129DB9E59007CC76D /* CharactersRouter.swift in Sources */,
 				B491BFDC29DF57500085C386 /* Item.swift in Sources */,
 				B491BFD929DF52130085C386 /* ComicsResponseDTO.swift in Sources */,
+				B491C00229E079D60085C386 /* SlotContainer.swift in Sources */,
 				B441D52C29DB28FB007CC76D /* ComicTableViewCell.swift in Sources */,
 				B441D51129D90FEF007CC76D /* UITableViewCell.swift in Sources */,
 				B441D52129DA6F1A007CC76D /* EventComicsView.swift in Sources */,
