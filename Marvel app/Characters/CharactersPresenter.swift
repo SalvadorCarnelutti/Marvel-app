@@ -49,7 +49,7 @@ final class CharactersPresenter: TabViewController {
                 // We are inserting new rows, not reloading them
                 self.viewCharacters.insertRows(at: newIndexPaths)
             case .failure(let error):
-                self.presentOKAlert(title: "Characters loading error", message: error.localizedDescription)
+                self.presentOKAlert(title: "alert_character_title".localized, message: error.localizedDescription)
             }
         }
     }
@@ -69,7 +69,7 @@ extension CharactersPresenter: CharactersViewToPresenterProtocol {
             case .success(let comicItems):
                 self.router.pushComics(with: CharacterComics(characterItem: self.itemAt(row: row), comicItems: comicItems))
             case .failure(let error):
-                self.presentOKAlert(title: "Comics loading error", message: error.localizedDescription)
+                self.presentOKAlert(title: "alert_comics_title".localized, message: error.localizedDescription)
             }
         }
     }

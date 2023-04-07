@@ -39,7 +39,7 @@ final class EventsPresenter: TabViewController {
                 self.eventItems = self.sortedEvents(events)
                 self.viewEvents.reloadTableViewData()
             case .failure(let error):
-                self.presentOKAlert(title: "Events loading error", message: error.localizedDescription)
+                self.presentOKAlert(title: "alert_event_title".localized, message: error.localizedDescription)
             }
         }
     }
@@ -66,7 +66,7 @@ extension EventsPresenter: EventsViewToPresenterProtocol {
             case .success(let comicItems):
                 self.router.presentComics(with: EventComics(eventItem: self.itemAt(row: row), comicItems: comicItems))
             case .failure(let error):
-                self.presentOKAlert(title: "Comics loading error", message: error.localizedDescription)
+                self.presentOKAlert(title: "alert_comics_title".localized, message: error.localizedDescription)
             }
         }
     }
