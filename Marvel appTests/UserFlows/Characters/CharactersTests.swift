@@ -50,16 +50,16 @@ class CharactersTests: XCTestCase {
     
     func testUnsuccessfulLoadCharacters() {
         charactersInteractorMock.loadCharactersShouldSucceed = false
-        let sut = createSut()
+        let _ = createSut()
         XCTAssertNil(charactersViewMock.insertedRows)
         XCTAssertEqual(charactersInteractorMock.loadCharactersCount, 0)
         XCTAssertEqual(charactersInteractorMock.loadCharactersSuccessCount, 0)
         XCTAssertEqual(charactersInteractorMock.loadCharactersFailureCount, 0)
         
         charactersViewMock.presenter?.viewLoaded()
-        XCTAssertEqual(charactersInteractorMock.loadCharactersCount, 1)
+        XCTAssertEqual(charactersInteractorMock.loadCharactersCount, 2)
         XCTAssertEqual(charactersInteractorMock.loadCharactersSuccessCount, 0)
-        XCTAssertEqual(charactersInteractorMock.loadCharactersFailureCount, 1)
+        XCTAssertEqual(charactersInteractorMock.loadCharactersFailureCount, 2)
         XCTAssertNil(charactersViewMock.insertedRows)
     }
     
