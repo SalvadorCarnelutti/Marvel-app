@@ -63,6 +63,6 @@ struct EventCellItem: Item {
     let startDate: Date?
     
     var description: String {
-        startDate?.formatAsString(dateFormat: "MMM d, yyyy") ?? "Unknown date"
+        startDate?.formatAsString(dateFormat: "MMM d, yyyy") ?? "event_no_date".localized
     }
 }

@@ -14,6 +14,7 @@ final class ComicTableViewCell: UITableViewCell {
         addSubview(descriptionLabel)
         descriptionLabel.numberOfLines = 0
         descriptionLabel.lineBreakMode = .byWordWrapping
+        descriptionLabel.font = .Roboto(type: .regular, size: 16)
         return descriptionLabel
     }()
     

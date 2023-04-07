@@ -45,7 +45,7 @@ extension CharacterComicsView: CharacterComicsPresenterToViewProtocol {
     }
     
     func configureAsEmpty() {
-        comicsDisplayView.configureAsEmpty(highlightView: characterHighlight, message: "No available comics to discuss")
+        comicsDisplayView.configureAsEmpty(highlightView: characterHighlight, message: "comics_unavailable".localized)
     }
     
     func configureTableView() {

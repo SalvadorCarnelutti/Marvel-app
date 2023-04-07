@@ -44,7 +44,7 @@ class BaseViewController: UIViewController, BaseViewProtocol {
     
     func presentOKAlert(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: "alert_ok".localized, style: .default, handler: nil))
         present(alert, animated: true, completion: nil)
     }
     
@@ -62,7 +62,8 @@ class BaseViewController: UIViewController, BaseViewProtocol {
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
         appearance.backgroundColor = UIColor.black
-        appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+        appearance.titleTextAttributes = [.foregroundColor: UIColor.white,
+                                          .font : UIFont.Roboto(type: .condensedBold, size: 20)]
         navigationItem.standardAppearance = appearance
         navigationItem.scrollEdgeAppearance = appearance
         navigationItem.compactAppearance = appearance // For iPhone small navigation bar in landscape.

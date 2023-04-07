@@ -63,6 +63,12 @@
 		B491BFEE29DF76410085C386 /* HTTPManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = B491BFED29DF76410085C386 /* HTTPManagerMock.swift */; };
 		B491BFF329DF76940085C386 /* RestClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B491BFF229DF76940085C386 /* RestClientTests.swift */; };
 		B491BFF629DFB3AE0085C386 /* CharactersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B491BFF529DFB3AE0085C386 /* CharactersTests.swift */; };
+		B491BFFC29E061640085C386 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B491BFF929E061630085C386 /* Roboto-Regular.ttf */; };
+		B491BFFD29E061640085C386 /* RobotoCondensed-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B491BFFA29E061630085C386 /* RobotoCondensed-Bold.ttf */; };
+		B491BFFE29E061640085C386 /* RobotoCondensed-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B491BFFB29E061640085C386 /* RobotoCondensed-Regular.ttf */; };
+		B491C00029E0657E0085C386 /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = B491BFFF29E0657E0085C386 /* UIFont.swift */; };
+		B491C00229E079D60085C386 /* SlotContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B491C00129E079D60085C386 /* SlotContainer.swift */; };
+		B491C00729E07C170085C386 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B491C00929E07C170085C386 /* Localizable.strings */; };
 		B4BFFF9029DCFCA300882EAF /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BFFF8F29DCFCA300882EAF /* BaseViewController.swift */; };
 		B4BFFF9229DCFCD400882EAF /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BFFF9129DCFCD400882EAF /* ActivityIndicator.swift */; };
 		B4BFFF9429DCFD0D00882EAF /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BFFF9329DCFD0D00882EAF /* UIView.swift */; };
@@ -141,6 +147,12 @@
 		B491BFED29DF76410085C386 /* HTTPManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPManagerMock.swift; sourceTree = "<group>"; };
 		B491BFF229DF76940085C386 /* RestClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestClientTests.swift; sourceTree = "<group>"; };
 		B491BFF529DFB3AE0085C386 /* CharactersTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersTests.swift; sourceTree = "<group>"; };
+		B491BFF929E061630085C386 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
+		B491BFFA29E061630085C386 /* RobotoCondensed-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-Bold.ttf"; sourceTree = "<group>"; };
+		B491BFFB29E061640085C386 /* RobotoCondensed-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-Regular.ttf"; sourceTree = "<group>"; };
+		B491BFFF29E0657E0085C386 /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
+		B491C00129E079D60085C386 /* SlotContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlotContainer.swift; sourceTree = "<group>"; };
+		B491C00829E07C170085C386 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B4BFFF8F29DCFCA300882EAF /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		B4BFFF9129DCFCD400882EAF /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		B4BFFF9329DCFD0D00882EAF /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
@@ -215,11 +227,9 @@
 		B441D50D29D8DC7B007CC76D /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				B491C00429E079F70085C386 /* Views */,
+				B491C00329E079E00085C386 /* ViewControllers */,
 				B4BFFF9529DCFD1E00882EAF /* Extensions */,
-				B4577CED29D79D9F00020AF5 /* TabBarViewController.swift */,
-				B4BFFF8F29DCFCA300882EAF /* BaseViewController.swift */,
-				B441D50B29D8DB87007CC76D /* TabViewController.swift */,
-				B4BFFF9129DCFCD400882EAF /* ActivityIndicator.swift */,
 				B441D52929DB20C4007CC76D /* CryptoHelper.swift */,
 			);
 			path = Utilities;
@@ -268,6 +278,7 @@
 		B4577CE829D79D9F00020AF5 /* Marvel app */ = {
 			isa = PBXGroup;
 			children = (
+				B491BFF729E0610F0085C386 /* Assets */,
 				B464EC0329DC971F007E3804 /* Network */,
 				B441D50D29D8DC7B007CC76D /* Utilities */,
 				B491BFD629DF51B10085C386 /* Shared */,
@@ -277,6 +288,7 @@
 				B4577CEB29D79D9F00020AF5 /* SceneDelegate.swift */,
 				B4577CF229D79DA000020AF5 /* Assets.xcassets */,
 				B4577CF429D79DA000020AF5 /* LaunchScreen.storyboard */,
+				B491C00929E07C170085C386 /* Localizable.strings */,
 				B4577CF729D79DA000020AF5 /* Info.plist */,
 				B441D4F729D8CEA7007CC76D /* GoogleService-Info.plist */,
 			);
@@ -403,6 +415,43 @@
 			path = Characters;
 			sourceTree = "<group>";
 		};
+		B491BFF729E0610F0085C386 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				B491BFF829E061140085C386 /* Fonts */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		B491BFF829E061140085C386 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				B491BFF929E061630085C386 /* Roboto-Regular.ttf */,
+				B491BFFA29E061630085C386 /* RobotoCondensed-Bold.ttf */,
+				B491BFFB29E061640085C386 /* RobotoCondensed-Regular.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		B491C00329E079E00085C386 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				B4577CED29D79D9F00020AF5 /* TabBarViewController.swift */,
+				B4BFFF8F29DCFCA300882EAF /* BaseViewController.swift */,
+				B441D50B29D8DB87007CC76D /* TabViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		B491C00429E079F70085C386 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B491C00129E079D60085C386 /* SlotContainer.swift */,
+				B4BFFF9129DCFCD400882EAF /* ActivityIndicator.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		B4BFFF9529DCFD1E00882EAF /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -410,6 +459,7 @@
 				B4BFFF9329DCFD0D00882EAF /* UIView.swift */,
 				B441D51029D90FEF007CC76D /* UITableViewCell.swift */,
 				B441D51629D9EB0C007CC76D /* UITableView.swift */,
+				B491BFFF29E0657E0085C386 /* UIFont.swift */,
 				B441D51429D9D613007CC76D /* Date.swift */,
 				B441D52729DB1AD0007CC76D /* String.swift */,
 			);
@@ -517,8 +567,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B491BFFE29E061640085C386 /* RobotoCondensed-Regular.ttf in Resources */,
 				B4577CF629D79DA000020AF5 /* LaunchScreen.storyboard in Resources */,
+				B491BFFD29E061640085C386 /* RobotoCondensed-Bold.ttf in Resources */,
+				B491C00729E07C170085C386 /* Localizable.strings in Resources */,
 				B4577CF329D79DA000020AF5 /* Assets.xcassets in Resources */,
+				B491BFFC29E061640085C386 /* Roboto-Regular.ttf in Resources */,
 				B441D4F829D8CEA7007CC76D /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -614,6 +668,7 @@
 				B441D54129DB9E59007CC76D /* CharactersRouter.swift in Sources */,
 				B491BFDC29DF57500085C386 /* Item.swift in Sources */,
 				B491BFD929DF52130085C386 /* ComicsResponseDTO.swift in Sources */,
+				B491C00229E079D60085C386 /* SlotContainer.swift in Sources */,
 				B441D52C29DB28FB007CC76D /* ComicTableViewCell.swift in Sources */,
 				B441D51129D90FEF007CC76D /* UITableViewCell.swift in Sources */,
 				B441D52129DA6F1A007CC76D /* EventComicsView.swift in Sources */,
@@ -645,6 +700,7 @@
 				B441D53C29DB9A3C007CC76D /* CharacterComicsPresenter.swift in Sources */,
 				B464EC1129DCB137007E3804 /* EventsResponseDTO.swift in Sources */,
 				B441D4FF29D8D70C007CC76D /* CharactersInteractor.swift in Sources */,
+				B491C00029E0657E0085C386 /* UIFont.swift in Sources */,
 				B441D54329DBA5EE007CC76D /* CharacterHighlight.swift in Sources */,
 				B441D50829D8DB31007CC76D /* EventsInteractor.swift in Sources */,
 				B441D52A29DB20C4007CC76D /* CryptoHelper.swift in Sources */,
@@ -682,6 +738,14 @@
 				B4577CF529D79DA000020AF5 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		B491C00929E07C170085C386 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B491C00829E07C170085C386 /* en */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

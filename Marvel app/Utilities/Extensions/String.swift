@@ -14,4 +14,8 @@ extension String {
         comps.scheme = "https"
         return comps.string!
     }
+    
+    var localized: String {
+        NSLocalizedString(self, comment: "")
+    }
 }

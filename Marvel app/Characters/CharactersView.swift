@@ -29,12 +29,13 @@ final class CharactersView: UIView {
         tableView.estimatedRowHeight = UITableView.automaticDimension
         tableView.separatorStyle = .none
         tableView.backgroundColor = .clear
+        tableView.clipsToBounds = false
         return tableView
     }()
     
     private func setupConstraints() {
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+            tableView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 8),
             tableView.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor, constant: 8),
             tableView.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
             tableView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)

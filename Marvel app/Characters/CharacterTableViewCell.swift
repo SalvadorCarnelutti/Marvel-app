@@ -11,7 +11,7 @@ class CharacterTableViewCell: UITableViewCell {
     private lazy var eventImageView: UIImageView = {
         let eventImageView = UIImageView()
         eventImageView.translatesAutoresizingMaskIntoConstraints = false
-        containerView.addSubview(eventImageView)
+        containerView.addContent(eventImageView)
         eventImageView.contentMode = .scaleAspectFit
         
         NSLayoutConstraint.activate([
@@ -25,8 +25,8 @@ class CharacterTableViewCell: UITableViewCell {
     private lazy var headingLabel: UILabel = {
         let headingLabel = UILabel()
         headingLabel.translatesAutoresizingMaskIntoConstraints = false
-        containerView.addSubview(headingLabel)
-        headingLabel.font = UIFont.boldSystemFont(ofSize: 24)
+        containerView.addContent(headingLabel)
+        headingLabel.font = .Roboto(type: RobotoType.condensedRegular, size: 24)
         headingLabel.numberOfLines = 0
         headingLabel.lineBreakMode = .byWordWrapping
         return headingLabel
@@ -35,20 +35,17 @@ class CharacterTableViewCell: UITableViewCell {
     private lazy var descriptionLabel: UILabel = {
         let descriptionLabel = UILabel()
         descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
-        containerView.addSubview(descriptionLabel)
-        descriptionLabel.font = UIFont.systemFont(ofSize: 14)
+        containerView.addContent(descriptionLabel)
+        descriptionLabel.font = .Roboto(type: RobotoType.regular, size: 14)
         descriptionLabel.numberOfLines = 2
         descriptionLabel.lineBreakMode = .byTruncatingTail
         return descriptionLabel
     }()
     
-    private lazy var containerView: UIView = {
-        let containerView = UIView()
+    private lazy var containerView: SlotContainer = {
+        let containerView = SlotContainer()
         containerView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(containerView)
-        containerView.backgroundColor = .systemBackground
-        containerView.clipsToBounds = true
-        containerView.layer.cornerRadius = 4
         return containerView
     }()
     

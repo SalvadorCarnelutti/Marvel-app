@@ -38,7 +38,7 @@ final class ComicsTableView: UIView {
     private func setupConstraints() {
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
-            tableView.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor, constant: 8),
+            tableView.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor),
             tableView.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
             tableView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)
         ])

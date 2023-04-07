@@ -45,7 +45,7 @@ extension EventComicsView: EventComicsPresenterToViewProtocol {
     }
     
     func configureAsEmpty() {
-        comicsDisplayView.configureAsEmpty(highlightView: eventHighlight, message: "No available comics to discuss")
+        comicsDisplayView.configureAsEmpty(highlightView: eventHighlight, message: "comics_unavailable".localized)
     }
     
     func configureTableView() {
@@ -70,6 +70,6 @@ extension EventComicsView: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return HighlightComicView(highlightView: eventHighlight, message: "Comics to discuss")
+        return HighlightComicView(highlightView: eventHighlight, message: "comics_available".localized)
     }
 }
