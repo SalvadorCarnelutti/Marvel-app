@@ -26,7 +26,7 @@ class EventHighlight: UIView {
         let headingLabel = UILabel()
         headingLabel.translatesAutoresizingMaskIntoConstraints = false
         addSubview(headingLabel)
-        headingLabel.font = UIFont.boldSystemFont(ofSize: 24)
+        headingLabel.font = .Roboto(type: .condensedRegular, size: 24)
         headingLabel.numberOfLines = 0
         headingLabel.lineBreakMode = .byWordWrapping
         return headingLabel
@@ -36,7 +36,7 @@ class EventHighlight: UIView {
         let descriptionLabel = UILabel()
         descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
         addSubview(descriptionLabel)
-        descriptionLabel.font = UIFont.systemFont(ofSize: 14)
+        descriptionLabel.font = .Roboto(type: .regular, size: 14)
         descriptionLabel.numberOfLines = 0
         descriptionLabel.lineBreakMode = .byWordWrapping
         return descriptionLabel

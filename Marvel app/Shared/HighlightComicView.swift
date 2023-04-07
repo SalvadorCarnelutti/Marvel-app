@@ -14,7 +14,7 @@ final class HighlightComicView: UIView {
         let messageLabel = UILabel()
         messageLabel.translatesAutoresizingMaskIntoConstraints = false
         addSubview(messageLabel)
-        messageLabel.font = .systemFont(ofSize: 20)
+        messageLabel.font = .Roboto(type: .condensedRegular, size: 20)
         messageLabel.textAlignment = .center
         messageLabel.numberOfLines = 0
         messageLabel.lineBreakMode = .byWordWrapping

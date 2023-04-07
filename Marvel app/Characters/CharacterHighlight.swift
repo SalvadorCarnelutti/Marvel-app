@@ -23,7 +23,7 @@ final class CharacterHighlight: UIView {
         let descriptionLabel = UILabel()
         descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
         addSubview(descriptionLabel)
-        descriptionLabel.font = UIFont.systemFont(ofSize: 14)
+        descriptionLabel.font = .Roboto(type: .regular, size: 14)
         descriptionLabel.numberOfLines = 0
         descriptionLabel.lineBreakMode = .byWordWrapping
         return descriptionLabel

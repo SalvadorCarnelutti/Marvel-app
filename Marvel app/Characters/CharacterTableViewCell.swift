@@ -26,7 +26,7 @@ class CharacterTableViewCell: UITableViewCell {
         let headingLabel = UILabel()
         headingLabel.translatesAutoresizingMaskIntoConstraints = false
         containerView.addSubview(headingLabel)
-        headingLabel.font = UIFont.boldSystemFont(ofSize: 24)
+        headingLabel.font = .Roboto(type: RobotoType.condensedRegular, size: 24)
         headingLabel.numberOfLines = 0
         headingLabel.lineBreakMode = .byWordWrapping
         return headingLabel
@@ -36,7 +36,7 @@ class CharacterTableViewCell: UITableViewCell {
         let descriptionLabel = UILabel()
         descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
         containerView.addSubview(descriptionLabel)
-        descriptionLabel.font = UIFont.systemFont(ofSize: 14)
+        descriptionLabel.font = .Roboto(type: RobotoType.regular, size: 14)
         descriptionLabel.numberOfLines = 2
         descriptionLabel.lineBreakMode = .byTruncatingTail
         return descriptionLabel
