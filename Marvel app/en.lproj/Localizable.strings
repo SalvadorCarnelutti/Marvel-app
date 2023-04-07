@@ -1,0 +1,24 @@
+/* 
+  Localizable.strings
+  Marvel app
+
+  Created by Salvador on 4/7/23.
+  
+*/
+
+// Core
+"alert_ok" = "Ok";
+
+// Characters
+"alert_character_title" = "Characters loading error";
+"character_no_bio" = "Bio unavailable";
+
+// Events
+"alert_event_title" = "Events loading error";
+"event_no_date" = "Unknown date";
+
+// Comics
+"comics_available" = "Comics to discuss";
+"comics_unavailable" = "No available comics to discuss";
+"alert_comics_title" = "Comics loading error";
+

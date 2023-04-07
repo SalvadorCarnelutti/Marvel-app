@@ -52,7 +52,7 @@ final class CharactersInteractor: CharactersPresenterToInteractorProtocol {
                 
                 onSuccess(characters)
             case .failure:
-                self.presenter?.presentOKAlert(title: "Characters loading error", message: "Unexpected loading error")
+                self.presenter?.presentOKAlert(title: "alert_character_title".localized, message: "Unexpected loading error")
             }
         }
     }
@@ -68,7 +68,7 @@ final class CharactersInteractor: CharactersPresenterToInteractorProtocol {
                 let comicItems = comicsResponse.data.results.map { $0.title }
                 onSuccess(comicItems)
             case .failure:
-                self.presenter?.presentOKAlert(title: "Comics loading error", message: "Unexpected loading error")
+                self.presenter?.presentOKAlert(title: "alert_comics_title".localized, message: "Unexpected loading error")
             }
         }
     }

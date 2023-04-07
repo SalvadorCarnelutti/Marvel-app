@@ -44,7 +44,7 @@ class BaseViewController: UIViewController, BaseViewProtocol {
     
     func presentOKAlert(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: "alert_ok".localized, style: .default, handler: nil))
         present(alert, animated: true, completion: nil)
     }
     

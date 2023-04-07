@@ -65,6 +65,7 @@
 		B491BFFE29E061640085C386 /* RobotoCondensed-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B491BFFB29E061640085C386 /* RobotoCondensed-Regular.ttf */; };
 		B491C00029E0657E0085C386 /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = B491BFFF29E0657E0085C386 /* UIFont.swift */; };
 		B491C00229E079D60085C386 /* SlotContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B491C00129E079D60085C386 /* SlotContainer.swift */; };
+		B491C00729E07C170085C386 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B491C00929E07C170085C386 /* Localizable.strings */; };
 		B4BFFF9029DCFCA300882EAF /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BFFF8F29DCFCA300882EAF /* BaseViewController.swift */; };
 		B4BFFF9229DCFCD400882EAF /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BFFF9129DCFCD400882EAF /* ActivityIndicator.swift */; };
 		B4BFFF9429DCFD0D00882EAF /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BFFF9329DCFD0D00882EAF /* UIView.swift */; };
@@ -152,6 +153,7 @@
 		B491BFFB29E061640085C386 /* RobotoCondensed-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-Regular.ttf"; sourceTree = "<group>"; };
 		B491BFFF29E0657E0085C386 /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
 		B491C00129E079D60085C386 /* SlotContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlotContainer.swift; sourceTree = "<group>"; };
+		B491C00829E07C170085C386 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B4BFFF8F29DCFCA300882EAF /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		B4BFFF9129DCFCD400882EAF /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		B4BFFF9329DCFD0D00882EAF /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
@@ -297,6 +299,7 @@
 				B4577CEB29D79D9F00020AF5 /* SceneDelegate.swift */,
 				B4577CF229D79DA000020AF5 /* Assets.xcassets */,
 				B4577CF429D79DA000020AF5 /* LaunchScreen.storyboard */,
+				B491C00929E07C170085C386 /* Localizable.strings */,
 				B4577CF729D79DA000020AF5 /* Info.plist */,
 				B441D4F729D8CEA7007CC76D /* GoogleService-Info.plist */,
 			);
@@ -558,6 +561,7 @@
 				B491BFFE29E061640085C386 /* RobotoCondensed-Regular.ttf in Resources */,
 				B4577CF629D79DA000020AF5 /* LaunchScreen.storyboard in Resources */,
 				B491BFFD29E061640085C386 /* RobotoCondensed-Bold.ttf in Resources */,
+				B491C00729E07C170085C386 /* Localizable.strings in Resources */,
 				B4577CF329D79DA000020AF5 /* Assets.xcassets in Resources */,
 				B491BFFC29E061640085C386 /* Roboto-Regular.ttf in Resources */,
 				B441D4F829D8CEA7007CC76D /* GoogleService-Info.plist in Resources */,
@@ -779,6 +783,14 @@
 				B4577CF529D79DA000020AF5 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		B491C00929E07C170085C386 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B491C00829E07C170085C386 /* en */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

@@ -34,7 +34,7 @@ final class EventsInteractor: EventsPresenterToInteractorProtocol {
                 let eventsArray = events.data.results
                 onSuccess(eventsArray)
             case .failure:
-                self.presenter?.presentOKAlert(title: "Events loading error", message: "Unexpected loading error")
+                self.presenter?.presentOKAlert(title: "alert_event_title".localized, message: "Unexpected loading error")
             }
         }
     }
@@ -50,7 +50,7 @@ final class EventsInteractor: EventsPresenterToInteractorProtocol {
                 let comicItems = comics.data.results.map { $0.title }
                 onSuccess(comicItems)
             case .failure:
-                self.presenter?.presentOKAlert(title: "Comics loading error", message: "Unexpected loading error")
+                self.presenter?.presentOKAlert(title: "alert_comics_title".localized, message: "Unexpected loading error")
             }
         }
     }
@@ -63,6 +63,6 @@ struct EventCellItem: Item {
     let startDate: Date?
     
     var description: String {
-        startDate?.formatAsString(dateFormat: "MMM d, yyyy") ?? "Unknown date"
+        startDate?.formatAsString(dateFormat: "MMM d, yyyy") ?? "event_no_date".localized
     }
 }

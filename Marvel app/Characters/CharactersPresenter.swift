@@ -86,7 +86,7 @@ struct CharacterCellItem: Item {
 extension Character {
     var characterDescription: String {
         guard let description = description, !description.isEmpty else {
-            return "Bio unavailable"
+            return "character_no_bio".localized
         }
         
         return description
