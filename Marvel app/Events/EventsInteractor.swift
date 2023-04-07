@@ -10,8 +10,8 @@ import Foundation
 
 protocol EventsPresenterToInteractorProtocol: AnyObject {
     var presenter: BaseViewProtocol? { get set }
-    func loadEvents(onSuccess: @escaping ([Event]) -> ())
-    func loadComicsFor(eventId: Int, onSuccess: @escaping ([String]) -> ())
+    func loadEvents(onCompletion completionHandler: @escaping (Result<[Event], Error>) -> ())
+    func loadComicsFor(eventId: Int, onCompletion completionHandler: @escaping (Result<[String], Error>) -> ())
 }
 
 // MARK: - PresenterToInteractorProtocol
@@ -23,7 +23,7 @@ final class EventsInteractor: EventsPresenterToInteractorProtocol {
         self.eventsRepository = eventsRepository
     }
     
-    func loadEvents(onSuccess: @escaping ([Event]) -> ()) {
+    func loadEvents(onCompletion completionHandler: @escaping (Result<[Event], Error>) -> ()) {
         presenter?.showLoader()
         eventsRepository.getEvents { [weak self] result in
             guard let self = self else { return }
@@ -32,14 +32,14 @@ final class EventsInteractor: EventsPresenterToInteractorProtocol {
             switch result {
             case .success(let events):
                 let eventsArray = events.data.results
-                onSuccess(eventsArray)
-            case .failure:
-                self.presenter?.presentOKAlert(title: "Events loading error", message: "Unexpected loading error")
+                completionHandler(.success(eventsArray))
+            case .failure(let error):
+                completionHandler(.failure(error))
             }
         }
     }
     
-    func loadComicsFor(eventId: Int, onSuccess: @escaping ([String]) -> ()) {
+    func loadComicsFor(eventId: Int, onCompletion completionHandler: @escaping (Result<[String], Error>) -> ()) {
         presenter?.showLoader()
         eventsRepository.loadComicsFor(id: eventId) { [weak self] result in
             guard let self = self else { return }
@@ -48,9 +48,9 @@ final class EventsInteractor: EventsPresenterToInteractorProtocol {
             switch result {
             case .success(let comics):
                 let comicItems = comics.data.results.map { $0.title }
-                onSuccess(comicItems)
-            case .failure:
-                self.presenter?.presentOKAlert(title: "Comics loading error", message: "Unexpected loading error")
+                completionHandler(.success(comicItems))
+            case .failure(let error):
+                completionHandler(.failure(error))
             }
         }
     }

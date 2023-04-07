@@ -9,8 +9,8 @@
 import Foundation
 
 final class CharacterComicsConfigurator {
-    private static func injectDependencies(view: CharacterComicsPresenterToViewProtocol,
-                                           presenter: CharacterComicsPresenter) {
+    static func injectDependencies(view: CharacterComicsPresenterToViewProtocol,
+                                   presenter: CharacterComicsPresenter) {
         view.presenter = presenter
         presenter.viewCharacterComics = view
     }

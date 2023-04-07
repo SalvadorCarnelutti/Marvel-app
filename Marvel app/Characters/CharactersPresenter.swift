@@ -39,13 +39,18 @@ final class CharactersPresenter: TabViewController {
     }
     
     private func loadCharacters() {
-        interactor.loadCharacters { [weak self] characters in
+        interactor.loadCharacters { [weak self] result in
             guard let self = self else { return }
             
-            let newIndexPaths = self.newIndexPaths(newItemsCount: characters.count)
-            self.characterItems += characters.map { $0.getItem }
-            // We are inserting new rows, not reloading them
-            self.viewCharacters.insertRows(at: newIndexPaths)
+            switch result {
+            case .success(let characters):
+                let newIndexPaths = self.newIndexPaths(newItemsCount: characters.count)
+                self.characterItems += characters.map { $0.getItem }
+                // We are inserting new rows, not reloading them
+                self.viewCharacters.insertRows(at: newIndexPaths)
+            case .failure(let error):
+                self.presentOKAlert(title: "Characters loading error", message: error.localizedDescription)
+            }
         }
     }
 }
@@ -57,9 +62,15 @@ extension CharactersPresenter: CharactersViewToPresenterProtocol {
     }
     
     func didSelectCharacterAt(row: Int) {
-        interactor.loadComicsFor(characterId: characterItems[row].id) { [weak self] comicItems in
+        interactor.loadComicsFor(characterId: characterItems[row].id) { [weak self] result in
             guard let self = self else { return }
-            self.router.pushComics(with: CharacterComics(characterItem: self.itemAt(row: row), comicItems: comicItems))
+            
+            switch result {
+            case .success(let comicItems):
+                self.router.pushComics(with: CharacterComics(characterItem: self.itemAt(row: row), comicItems: comicItems))
+            case .failure(let error):
+                self.presentOKAlert(title: "Comics loading error", message: error.localizedDescription)
+            }
         }
     }
     

@@ -31,13 +31,24 @@ final class EventsPresenter: TabViewController {
     }
     
     private func loadEvents() {
-        interactor.loadEvents { [weak self] events in
-            let dateSortedEvents = events.filter { $0.start != nil }.map { $0.getItem }.sorted { $0.startDate! > $1.startDate! }
-            let datelessEvents = events.filter { $0.start == nil }.map { $0.getItem }
-            let combinedEvents = dateSortedEvents + datelessEvents
-            self?.eventItems = combinedEvents
-            self?.viewEvents.reloadTableViewData()
+        interactor.loadEvents { [weak self] result in
+            guard let self = self else { return }
+            
+            switch result {
+            case .success(let events):
+                self.eventItems = self.sortedEvents(events)
+                self.viewEvents.reloadTableViewData()
+            case .failure(let error):
+                self.presentOKAlert(title: "Events loading error", message: error.localizedDescription)
+            }
         }
+    }
+    
+    private func sortedEvents(_ events: [Event]) -> [EventCellItem] {
+        let dateSortedEvents = events.filter { $0.start != nil }.map { $0.getItem }.sorted { $0.startDate! > $1.startDate! }
+        let datelessEvents = events.filter { $0.start == nil }.map { $0.getItem }
+        let combinedEvents = dateSortedEvents + datelessEvents
+        return combinedEvents
     }
 }
 
@@ -48,9 +59,15 @@ extension EventsPresenter: EventsViewToPresenterProtocol {
     }
     
     func didSelectEventAt(row: Int) {
-        interactor.loadComicsFor(eventId: eventItems[row].id) { [weak self] comicItems in
+        interactor.loadComicsFor(eventId: eventItems[row].id) { [weak self] result in
             guard let self = self else { return }
-            self.router.presentComics(with: EventComics(eventItem: self.itemAt(row: row), comicItems: comicItems))
+            
+            switch result {
+            case .success(let comicItems):
+                self.router.presentComics(with: EventComics(eventItem: self.itemAt(row: row), comicItems: comicItems))
+            case .failure(let error):
+                self.presentOKAlert(title: "Comics loading error", message: error.localizedDescription)
+            }
         }
     }
     

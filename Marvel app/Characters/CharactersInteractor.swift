@@ -10,8 +10,8 @@ import Foundation
 
 protocol CharactersPresenterToInteractorProtocol: AnyObject {
     var presenter: BaseViewProtocol? { get set }
-    func loadCharacters(onSuccess: @escaping ([Character]) -> ())
-    func loadComicsFor(characterId: Int, onSuccess: @escaping ([String]) -> ())
+    func loadCharacters(onCompletion completionHandler: @escaping (Result<[Character], Error>) -> ())
+    func loadComicsFor(characterId: Int, onCompletion completionHandler: @escaping (Result<[String], Error>) -> ())
 }
 
 // MARK: - PresenterToInteractorProtocol
@@ -30,7 +30,7 @@ final class CharactersInteractor: CharactersPresenterToInteractorProtocol {
         self.pullRate = pullRate
     }
     
-    func loadCharacters(onSuccess: @escaping ([Character]) -> ()) {
+    func loadCharacters(onCompletion completionHandler: @escaping (Result<[Character], Error>) -> ()) {
         guard isThereMore, !isFetchInProgress else {
             return
         }
@@ -50,14 +50,14 @@ final class CharactersInteractor: CharactersPresenterToInteractorProtocol {
                 // Check if we have reached the end of pullable items
                 self.isThereMore = self.charactersCount < charactersResponse.data.total
                 
-                onSuccess(characters)
-            case .failure:
-                self.presenter?.presentOKAlert(title: "Characters loading error", message: "Unexpected loading error")
+                completionHandler(.success(characters))
+            case .failure(let error):
+                completionHandler(.failure(error))
             }
         }
     }
     
-    func loadComicsFor(characterId: Int, onSuccess: @escaping ([String]) -> ()) {
+    func loadComicsFor(characterId: Int, onCompletion completionHandler: @escaping (Result<[String], Error>) -> ()) {
         presenter?.showLoader()
         charactersRepository.loadComicsFor(id: characterId) { [weak self] result in
             guard let self = self else { return }
@@ -66,9 +66,9 @@ final class CharactersInteractor: CharactersPresenterToInteractorProtocol {
             switch result {
             case .success(let comicsResponse):
                 let comicItems = comicsResponse.data.results.map { $0.title }
-                onSuccess(comicItems)
-            case .failure:
-                self.presenter?.presentOKAlert(title: "Comics loading error", message: "Unexpected loading error")
+                completionHandler(.success(comicItems))
+            case .failure(let error):
+                completionHandler(.failure(error))
             }
         }
     }

@@ -9,10 +9,10 @@
 import Foundation
 
 final class CharactersConfigurator {
-    private static func injectDependencies(view: CharactersPresenterToViewProtocol,
-                                           interactor: CharactersPresenterToInteractorProtocol,
-                                           presenter: CharactersPresenter,
-                                           router: CharactersPresenterToRouterProtocol) {
+    static func injectDependencies(view: CharactersPresenterToViewProtocol,
+                                   interactor: CharactersPresenterToInteractorProtocol,
+                                   presenter: CharactersPresenter,
+                                   router: CharactersPresenterToRouterProtocol) {
         presenter.interactor = interactor
         interactor.presenter = presenter
         
