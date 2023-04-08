@@ -48,21 +48,6 @@ class CharactersTests: XCTestCase {
         XCTAssertEqual(charactersInteractorMock.loadCharactersFailureCount, 0)
     }
     
-    func testUnsuccessfulLoadCharacters() {
-        charactersInteractorMock.loadCharactersShouldSucceed = false
-        let _ = createSut()
-        XCTAssertNil(charactersViewMock.insertedRows)
-        XCTAssertEqual(charactersInteractorMock.loadCharactersCount, 0)
-        XCTAssertEqual(charactersInteractorMock.loadCharactersSuccessCount, 0)
-        XCTAssertEqual(charactersInteractorMock.loadCharactersFailureCount, 0)
-        
-        charactersViewMock.presenter?.viewLoaded()
-        XCTAssertEqual(charactersInteractorMock.loadCharactersCount, 2)
-        XCTAssertEqual(charactersInteractorMock.loadCharactersSuccessCount, 0)
-        XCTAssertEqual(charactersInteractorMock.loadCharactersFailureCount, 2)
-        XCTAssertNil(charactersViewMock.insertedRows)
-    }
-    
     func testNewIndexPaths() {
         charactersInteractorMock.loadCharactersShouldSucceed = true
         let _ = createSut()

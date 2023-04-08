@@ -313,11 +313,20 @@
 		B458208029E097F500A4505E /* Events */ = {
 			isa = PBXGroup;
 			children = (
+				B458208729E09A3F00A4505E /* EventsTests.swift */,
+				B458208929E0C50100A4505E /* Mocks */,
+			);
+			path = Events;
+			sourceTree = "<group>";
+		};
+		B458208929E0C50100A4505E /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
 				B458208129E0981100A4505E /* EventsInteractorMock.swift */,
 				B458208329E0981B00A4505E /* EventsRouterMock.swift */,
 				B458208529E0982A00A4505E /* EventsViewMock.swift */,
 			);
-			path = Events;
+			path = Mocks;
 			sourceTree = "<group>";
 		};
 		B464EC0329DC971F007E3804 /* Network */ = {
@@ -401,7 +410,6 @@
 			isa = PBXGroup;
 			children = (
 				B458208029E097F500A4505E /* Events */,
-				B458208729E09A3F00A4505E /* EventsTests.swift */,
 				B491BFF429DFB3090085C386 /* Characters */,
 			);
 			path = UserFlows;
@@ -426,8 +434,8 @@
 		B491BFF429DFB3090085C386 /* Characters */ = {
 			isa = PBXGroup;
 			children = (
-				B491BFE129DF73530085C386 /* Mocks */,
 				B491BFF529DFB3AE0085C386 /* CharactersTests.swift */,
+				B491BFE129DF73530085C386 /* Mocks */,
 			);
 			path = Characters;
 			sourceTree = "<group>";

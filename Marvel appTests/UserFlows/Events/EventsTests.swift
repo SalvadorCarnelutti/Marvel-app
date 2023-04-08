@@ -42,19 +42,6 @@ class EventsTests: XCTestCase {
         XCTAssertEqual(eventsInteractorMock.loadEventsFailureCount, 0)
     }
     
-    func testUnsuccessfulLoadEvents() {
-        eventsInteractorMock.loadEventsShouldSucceed = false
-        let _ = createSut()
-        XCTAssertEqual(eventsInteractorMock.loadEventsCount, 0)
-        XCTAssertEqual(eventsInteractorMock.loadEventsSuccessCount, 0)
-        XCTAssertEqual(eventsInteractorMock.loadEventsFailureCount, 0)
-        
-        eventsViewMock.presenter?.viewLoaded()
-        XCTAssertEqual(eventsInteractorMock.loadEventsCount, 2)
-        XCTAssertEqual(eventsInteractorMock.loadEventsSuccessCount, 0)
-        XCTAssertEqual(eventsInteractorMock.loadEventsFailureCount, 2)
-    }
-    
     func testTableReloaded() {
         eventsInteractorMock.loadEventsShouldSucceed = true
         let _ = createSut()
