@@ -14,9 +14,4 @@ target 'Marvel app' do
     inherit! :search_paths
     # Pods for testing
   end
-
-  target 'Marvel appUITests' do
-    # Pods for testing
-  end
-
 end
