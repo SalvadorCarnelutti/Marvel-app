@@ -1,6 +1,8 @@
+Some core screens:
+
 <p align = "center">
 <img src="README-images/Characters.png" width="300"> <img src="README-images/Character-Detail.png" width="300">
-<img src="README-images/Events.png" width="300"> <img src="Event-Detail.png" width="300">
+<img src="README-images/Events.png" width="300"> <img src="README-images/Event-Detail.png" width="300">
 </p>
 
 ## Table of contents
