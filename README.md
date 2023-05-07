@@ -1,7 +1,7 @@
-![Characters table](README-images/Characters.png)
-![Character detail](README-images/Character-Detail.png)
-![Events table](README-images/Events.png)
-![Event detail](README-images/Event-Detail.png)
+<p align = "center">
+<img src="README-images/Characters.png" width="300"> <img src="README-images/Character-Detail.png" width="300">
+<img src="README-images/Events.png" width="300"> <img src="Event-Detail.png" width="300">
+</p>
 
 ## Table of contents
 * [General info](#general-info)
